@@ -1,0 +1,5 @@
+﻿Index,UnitType,Name,Hp,Armor,Damage,AttackRange,MoveSpeed,UnitSize,UnitState,ManufactureTime,SkillCount
+int,UnitType,string,int,int,int,float,float,UnitSize,UnitState,int,int
+1300000,3,좀비,10,1,5,1,1,1,1,0,1
+1300001,3,들개,10,1,5,1,1,1,1,0,1
+1300002,3,늑대,10,1,5,1,1,1,1,0,1

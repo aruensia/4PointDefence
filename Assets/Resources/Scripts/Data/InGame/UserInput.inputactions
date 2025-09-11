@@ -1,0 +1,126 @@
+{
+    "name": "UserInput",
+    "maps": [
+        {
+            "name": "UserInput",
+            "id": "3f290f22-b72f-42df-b709-7e2fb533ff45",
+            "actions": [
+                {
+                    "name": "Qselect",
+                    "type": "Button",
+                    "id": "fb48332a-7e59-42f0-adcc-ae95bbd5abc3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Wselect",
+                    "type": "Button",
+                    "id": "3e441c28-b9a7-41d6-bf12-8f87821f8114",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Eselect",
+                    "type": "Button",
+                    "id": "4b8e9248-0185-4237-84f4-52537ef06d98",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Rselect",
+                    "type": "Button",
+                    "id": "c1457b3d-372b-48fd-8863-f36ee94b009e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tselect",
+                    "type": "Button",
+                    "id": "09b55282-fef3-4f6b-bcc8-75885a3620fd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cf81e7ca-11bb-495d-9ca7-1990c828e47e",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Qselect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a6ccb9e1-ce8b-4d00-9973-8cdaaf1ae725",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Wselect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "00624e42-5cf5-4908-8b97-7ac11c39cfaa",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Eselect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "10b9b875-4f3c-418b-8249-d97a14ec8aeb",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rselect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "123e32d2-8657-46fc-8e85-b73dd772e59d",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tselect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Pc",
+            "bindingGroup": "Pc",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
