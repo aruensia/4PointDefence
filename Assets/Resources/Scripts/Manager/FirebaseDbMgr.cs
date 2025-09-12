@@ -18,15 +18,19 @@ public class FirebaseDbMgr : MonoBehaviour
         this.dbRef = FirebaseAuthMgr.dbRef;
         this.user = FirebaseAuthMgr.user;
 
-        if(this.dbRef == null)
+        if(dbRef != null)
         {
-            Debug.Log("이거 널임");
+            Debug.Log("데이터 옴");
+        }
+        else
+        {
+            Debug.Log("데이터 안옴");
         }
     }
 
     public void SaveToDb()
     {
-        var _initMoney = Manager.Instance.player.playerMoney;
+        var _initMoney = 5;
 
         StartCoroutine(UpdataMoney(_initMoney));
     }

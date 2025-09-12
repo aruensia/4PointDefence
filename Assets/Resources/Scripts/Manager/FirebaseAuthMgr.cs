@@ -5,6 +5,7 @@ using Firebase;
 using Firebase.Auth;
 using Firebase.Database;
 using System.Threading.Tasks;
+using TMPro.EditorUtilities;
 
 public class FirebaseAuthMgr : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class FirebaseAuthMgr : MonoBehaviour
 
     private void Awake()
     {
+        _titleManager = GameObject.Find("TitleManager").GetComponent<TitleManager>();
+
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
             DependencyStatus dependencyStatus = task.Result;
@@ -23,14 +26,13 @@ public class FirebaseAuthMgr : MonoBehaviour
             {
                 auth = FirebaseAuth.DefaultInstance;
                 dbRef = FirebaseDatabase.DefaultInstance.RootReference;
+                Debug.Log("파이어 베이스 초기화 완료");
             }
             else
             {
-                UnityEngine.Debug.LogError("파이어베이스 오류");
+                UnityEngine.Debug.LogError("파이어베이스 오류" + task.Exception.ToString());
             }
         });
-
-        _titleManager = GameObject.Find("TitleManager").GetComponent<TitleManager>();
     }
 
 
@@ -43,23 +45,13 @@ public class FirebaseAuthMgr : MonoBehaviour
         _startBtn.interactable = false;
         _warningText.text = "";
         _confirmText.text = "";
-
-        if(dbRef == null)
-        {
-            Debug.Log("널로 들어오네요");
-        }
-
-        if(auth == null)
-        {
-            Debug.Log("auth도 널로 들어옴");
-        }
     }
 
     public void Login()
     {
         var _emailField = _titleManager.emailField;
         var _pwField = _titleManager.pwField;
-
+        _titleManager.DbManager.gameObject.SetActive(true);
         StartCoroutine(LoginCor(_emailField.text, _pwField.text));
     }
 
@@ -112,11 +104,13 @@ public class FirebaseAuthMgr : MonoBehaviour
             var _nickField = _titleManager.nickField;
             var _confirmText = _titleManager.confirmText;
             var _startBtn = _titleManager.startBtn;
+            var _loginBtn = _titleManager.loginBtn;
 
             _warningText.text = "";
             _nickField.text = user.DisplayName;
             _confirmText.text = "로그인 완료, 반갑습니다 " + user.DisplayName + "님";
             _startBtn.interactable = true;
+            _loginBtn.SetActive(false);
         }
     }
 
@@ -125,6 +119,8 @@ public class FirebaseAuthMgr : MonoBehaviour
         var _emailField = _titleManager.emailField;
         var _pwField = _titleManager.pwField;
         var _nickField = _titleManager.nickField;
+
+        _nickField.gameObject.SetActive(true);
 
         StartCoroutine(RegisterCor(_emailField.text, _pwField.text, _nickField.text));
     }

@@ -162,7 +162,9 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.DefaultCompany.DefenceGame
     Standalone: com.DefaultCompany.DefenceGame
+    iPhone: com.DefaultCompany.DefenceGame
   buildNumber:
     Standalone: 0
     VisionOS: 0

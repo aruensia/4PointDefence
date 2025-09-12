@@ -19,7 +19,10 @@ public class TitleManager : MonoBehaviour
     public TextMeshProUGUI confirmText;
 
     public Button startBtn;
-
+    public GameObject loginBtn;
+    public GameObject SetRegisterBtn;
+    public GameObject RegisterBtn;
+    public GameObject DbManager;
 
     public List<TextMeshProUGUI> enhanceInfoList;
 
@@ -67,5 +70,10 @@ public class TitleManager : MonoBehaviour
     public void LoginButtonOn()
     {
         startBtn.gameObject.transform.parent.gameObject.SetActive(true);
+    }
+
+    public void SetOnRegisterUI()
+    {
+
     }
 }
