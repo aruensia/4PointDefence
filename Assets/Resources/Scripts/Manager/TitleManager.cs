@@ -3,11 +3,23 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TitleManager : MonoBehaviour
 {
     public GameObject OptionPanel;
     public GameObject EnhancePanel;
+    public GameObject LoginPanel;
+
+    public InputField emailField; 
+    public InputField pwField; 
+    public InputField nickField; 
+
+    public TextMeshProUGUI warningText;
+    public TextMeshProUGUI confirmText;
+
+    public Button startBtn;
+
 
     public List<TextMeshProUGUI> enhanceInfoList;
 
@@ -45,5 +57,15 @@ public class TitleManager : MonoBehaviour
     public void EnhancePanelOff()
     {
         EnhancePanel.SetActive(false);
+    }
+
+    public void LoginSuccess()
+    {
+        LoginPanel.SetActive(false);
+    }
+
+    public void LoginButtonOn()
+    {
+        startBtn.gameObject.transform.parent.gameObject.SetActive(true);
     }
 }
