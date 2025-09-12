@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "488773927939",
+    "project_id": "unitydefence-9ceb3",
+    "storage_bucket": "unitydefence-9ceb3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488773927939:android:a67aec4f3569a629627a36",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.DefenceGame"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7VKnH_zEm3elj4G8Qv9MuWA1g4Sj92yg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
