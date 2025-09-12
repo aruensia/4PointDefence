@@ -55,6 +55,7 @@ ExportedObj/
 *.opendb
 *.VC.db
 
+
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
@@ -97,3 +98,6 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# Firebase Data
+**/[Ff]irebase
