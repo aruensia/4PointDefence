@@ -22,6 +22,8 @@ public class TitleManager : MonoBehaviour
     public GameObject loginBtn;
     public GameObject SetRegisterBtn;
     public GameObject RegisterBtn;
+    public GameObject ExitBtn;
+
     public GameObject DbManager;
 
     public List<TextMeshProUGUI> enhanceInfoList;
@@ -74,6 +76,19 @@ public class TitleManager : MonoBehaviour
 
     public void SetOnRegisterUI()
     {
+        nickField.gameObject.SetActive(true);
+        ExitBtn.gameObject.SetActive(true);
+        RegisterBtn.gameObject.SetActive(true);
+        loginBtn.gameObject.SetActive(false);
+        SetRegisterBtn.gameObject.SetActive(false);
+    }
 
+    public void ExitButton()
+    {
+        nickField.gameObject.SetActive(false);
+        ExitBtn.gameObject.SetActive(false);
+        RegisterBtn.gameObject.SetActive(false);
+        loginBtn.gameObject.SetActive(true);
+        SetRegisterBtn.gameObject.SetActive(true);
     }
 }
