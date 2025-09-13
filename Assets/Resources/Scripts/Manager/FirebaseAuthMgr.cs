@@ -14,6 +14,7 @@ public class FirebaseAuthMgr : MonoBehaviour
     public static DatabaseReference dbRef;
 
     TitleManager _titleManager;
+    FirebaseDbMgr firebaseDbMgr;
 
     private void Awake()
     {
@@ -51,7 +52,6 @@ public class FirebaseAuthMgr : MonoBehaviour
     {
         var _emailField = _titleManager.emailField;
         var _pwField = _titleManager.pwField;
-        _titleManager.DbManager.gameObject.SetActive(true);
         StartCoroutine(LoginCor(_emailField.text, _pwField.text));
     }
 
@@ -110,7 +110,9 @@ public class FirebaseAuthMgr : MonoBehaviour
             _nickField.text = user.DisplayName;
             _confirmText.text = "로그인 완료, 반갑습니다 " + user.DisplayName + "님";
             _startBtn.interactable = true;
+            Debug.Log(user.UserId);
             _loginBtn.SetActive(false);
+            _titleManager.DbManager.gameObject.SetActive(true);
         }
     }
 

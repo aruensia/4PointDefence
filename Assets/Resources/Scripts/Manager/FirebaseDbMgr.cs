@@ -12,6 +12,8 @@ public class FirebaseDbMgr : MonoBehaviour
     DatabaseReference dbRef;
     FirebaseUser user;
 
+   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,5 +53,34 @@ public class FirebaseDbMgr : MonoBehaviour
         }
     }
 
+    public void LoadToDb()
+    {
+        StartCoroutine(LoadUserData());
+    }
 
+    public IEnumerator LoadUserData()
+    {
+        var DBTask = dbRef.Child("users").Child(user.UserId).GetValueAsync();
+
+        yield return new WaitUntil(() => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning($"데이터 불러오기 실패! 사유: {DBTask.Exception}");
+        }
+        else if (DBTask.Result.Value == null)
+        {
+            Debug.LogWarning("저장된 데이터가 없습니다!");
+        }
+        else
+        {
+            DataSnapshot snapshot = DBTask.Result;
+
+            Manager.Instance.player.playerMoney = int.Parse(snapshot.Child("money").Exists ? snapshot.Child("money").Value.ToString() : "0");
+
+            Debug.Log("데이터 로드 성공");
+            Debug.Log(Manager.Instance.player.playerMoney);
+
+        }
+    }
 }
