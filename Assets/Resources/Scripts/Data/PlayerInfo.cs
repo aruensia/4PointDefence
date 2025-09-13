@@ -7,9 +7,9 @@ public class PlayerInfo
     public int playerMoney;
 
     public int totalGoldEnhance;
-    public int totalAttackEnhance;
-    public int totalDefenceEnhance;
-    public int totalHpEnhance;
+    public int Unit_1_Enhance = 1;
+    public int Unit_2_Enhance = 1;
+    public int Unit_3_Enhance = 1;
 
     public int _defaultGold = 1;
 

@@ -12,8 +12,6 @@ public class FirebaseDbMgr : MonoBehaviour
     DatabaseReference dbRef;
     FirebaseUser user;
 
-   
-
     // Start is called before the first frame update
     void Start()
     {
@@ -32,9 +30,15 @@ public class FirebaseDbMgr : MonoBehaviour
 
     public void SaveToDb()
     {
-        var _initMoney = 5;
+        var _initMoney = Manager.Instance.player.playerMoney;
+        var _initUnit1 = Manager.Instance.player.Unit_1_Enhance;
+        var _initUnit2 = Manager.Instance.player.Unit_2_Enhance;
+        var _initUnit3 = Manager.Instance.player.Unit_3_Enhance;
 
         StartCoroutine(UpdataMoney(_initMoney));
+        StartCoroutine(UpdataUnit1Count(_initUnit1));
+        StartCoroutine(UpdataUnit2Count(_initUnit2));
+        StartCoroutine(UpdataUnit3Count(_initUnit3));
     }
 
     IEnumerator UpdataMoney(int money)
@@ -44,6 +48,54 @@ public class FirebaseDbMgr : MonoBehaviour
         yield return new WaitUntil(predicate: () => DbTask.IsCompleted);
 
         if(DbTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"돈 업뎃 실패! 사유 : {DbTask.Exception}");
+        }
+        else
+        {
+            Debug.Log("돈 업데이트 완료");
+        }
+    }
+
+    IEnumerator UpdataUnit1Count(int unit1)
+    {
+        var DbTask = dbRef.Child("users").Child(user.UserId).Child("unit1").SetValueAsync(unit1);
+
+        yield return new WaitUntil(predicate: () => DbTask.IsCompleted);
+
+        if (DbTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"돈 업뎃 실패! 사유 : {DbTask.Exception}");
+        }
+        else
+        {
+            Debug.Log("돈 업데이트 완료");
+        }
+    }
+
+    IEnumerator UpdataUnit2Count(int unit2)
+    {
+        var DbTask = dbRef.Child("users").Child(user.UserId).Child("unit2").SetValueAsync(unit2);
+
+        yield return new WaitUntil(predicate: () => DbTask.IsCompleted);
+
+        if (DbTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"돈 업뎃 실패! 사유 : {DbTask.Exception}");
+        }
+        else
+        {
+            Debug.Log("돈 업데이트 완료");
+        }
+    }
+
+    IEnumerator UpdataUnit3Count(int unit3)
+    {
+        var DbTask = dbRef.Child("users").Child(user.UserId).Child("unit3").SetValueAsync(unit3);
+
+        yield return new WaitUntil(predicate: () => DbTask.IsCompleted);
+
+        if (DbTask.Exception != null)
         {
             Debug.LogWarning(message: $"돈 업뎃 실패! 사유 : {DbTask.Exception}");
         }
@@ -78,9 +130,9 @@ public class FirebaseDbMgr : MonoBehaviour
 
             Manager.Instance.player.playerMoney = int.Parse(snapshot.Child("money").Exists ? snapshot.Child("money").Value.ToString() : "0");
 
-            Debug.Log("데이터 로드 성공");
-            Debug.Log(Manager.Instance.player.playerMoney);
+            TitleManager.playerData = true;
 
+            Debug.Log("데이터 로드 성공");
         }
     }
 }

@@ -34,6 +34,8 @@ public class TitleManager : MonoBehaviour
     public float BGMVolumValue;
     public float SFXVolumValue;
 
+    public static bool playerData = false;
+
     private void Start()
     {
         firebaseDbMgr = GameObject.Find("Manager").transform.GetChild(0).GetComponent<FirebaseDbMgr>();
@@ -64,8 +66,15 @@ public class TitleManager : MonoBehaviour
 
     public void EnhancePanelOn()
     {
+        StartCoroutine(WaitPlayerData());
+    }
+
+    IEnumerator WaitPlayerData()
+    {
         firebaseDbMgr.LoadToDb();
+        yield return new WaitUntil(() => playerData);
         EnhancePanel.SetActive(true);
+        playerData = false;
     }
 
     public void EnhancePanelOff()
