@@ -69,7 +69,7 @@ public class FirebaseDbMgr : MonoBehaviour
         }
         else
         {
-            Debug.Log("돈 업데이트 완료");
+            Debug.Log("유닛1 업데이트 완료");
         }
     }
 
@@ -85,7 +85,7 @@ public class FirebaseDbMgr : MonoBehaviour
         }
         else
         {
-            Debug.Log("돈 업데이트 완료");
+            Debug.Log("유닛2 업데이트 완료");
         }
     }
 
@@ -101,7 +101,7 @@ public class FirebaseDbMgr : MonoBehaviour
         }
         else
         {
-            Debug.Log("돈 업데이트 완료");
+            Debug.Log("유닛3 업데이트 완료");
         }
     }
 
@@ -129,6 +129,9 @@ public class FirebaseDbMgr : MonoBehaviour
             DataSnapshot snapshot = DBTask.Result;
 
             Manager.Instance.player.playerMoney = int.Parse(snapshot.Child("money").Exists ? snapshot.Child("money").Value.ToString() : "0");
+            Manager.Instance.player.Unit_1_Enhance = int.Parse(snapshot.Child("unit1").Exists ? snapshot.Child("unit1").Value.ToString() : "0");
+            Manager.Instance.player.Unit_2_Enhance = int.Parse(snapshot.Child("unit2").Exists ? snapshot.Child("unit2").Value.ToString() : "0");
+            Manager.Instance.player.Unit_3_Enhance = int.Parse(snapshot.Child("unit3").Exists ? snapshot.Child("unit3").Value.ToString() : "0");
 
             TitleManager.playerData = true;
 

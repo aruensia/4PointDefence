@@ -28,7 +28,7 @@ public class TitleManager : MonoBehaviour
 
     public List<TextMeshProUGUI> enhanceInfoList;
 
-    FirebaseDbMgr firebaseDbMgr;
+    public FirebaseDbMgr firebaseDbMgr;
 
     public float MainVolumValue;
     public float BGMVolumValue;
@@ -39,6 +39,12 @@ public class TitleManager : MonoBehaviour
     private void Start()
     {
         firebaseDbMgr = GameObject.Find("Manager").transform.GetChild(0).GetComponent<FirebaseDbMgr>();
+    }
+
+    public void TestInitMoney()
+    {
+        Manager.Instance.player.playerMoney = 10000;
+        firebaseDbMgr.SaveToDb();
     }
 
 
@@ -79,6 +85,7 @@ public class TitleManager : MonoBehaviour
 
     public void EnhancePanelOff()
     {
+        EnhancePanel.GetComponent<EnhanceData>().ResetUpgradeValue();
         EnhancePanel.SetActive(false);
     }
 
