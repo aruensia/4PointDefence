@@ -39,7 +39,7 @@ public class DataLoader
                         tempForceUnit.Armor = int.Parse(values[4]);
                         tempForceUnit.Damage = int.Parse(values[5]);
                         tempForceUnit.AttackRange = float.Parse(values[6]);
-                        tempForceUnit.MoveSpeed = float.Parse(values[7]);
+                        tempForceUnit.AttackSpeed = float.Parse(values[7]);
                         tempForceUnit.unitSize = (UnitSize)int.Parse(values[8]);
                         tempForceUnit.unitState = (UnitState)int.Parse(values[9]);
                         tempForceUnit.UseSkillCount = int.Parse(values[11]);
@@ -107,15 +107,5 @@ public class DataLoader
                     break;
             }
         }
-    }
-
-    public void ShowData()
-    {
-        ForceUnitData mychar = (ForceUnitData)tableDatas["ForceUnitTable"][0];
-
-        Debug.Log(mychar.Name);
-        Debug.Log(mychar.MoveSpeed);
-        Debug.Log(mychar.Hp);
-        Debug.Log(mychar.Armor);
     }
 }

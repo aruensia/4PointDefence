@@ -55,7 +55,7 @@ public class UnitPoolController : MonoBehaviour
         newForceUnit.forceUnitData.Armor = tempForce.Armor;
         newForceUnit.forceUnitData.Damage = tempForce.Damage;
         newForceUnit.forceUnitData.AttackRange = tempForce.AttackRange;
-        newForceUnit.forceUnitData.MoveSpeed = tempForce.MoveSpeed;
+        newForceUnit.forceUnitData.AttackSpeed = tempForce.AttackSpeed;
         newForceUnit.forceUnitData.unitSize = tempForce.unitSize;
         newForceUnit.forceUnitData.unitState = tempForce.unitState;
         newForceUnit.forceUnitData.UseSkillCount = tempForce.UseSkillCount;

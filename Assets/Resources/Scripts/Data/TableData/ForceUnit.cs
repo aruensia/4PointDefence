@@ -19,13 +19,14 @@ public class ForceUnit : MonoBehaviour
     int enemyUnitCount = 0;
     int tempEnemyUnitCount = 0;
 
-    float tempradius = 4f;
+    float tempradius;
 
     [SerializeField] List<GameObject> enemyobj;
 
     void Start()
     {
         forceUnitData.unitState = UnitState.Start;
+        tempradius = forceUnitData.AttackRange;
         targetUnit = null;
         StartForceUnit();
     }
@@ -116,7 +117,7 @@ public class ForceUnit : MonoBehaviour
         {
             UnitAttack();
 
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(forceUnitData.AttackSpeed);
         }
     }
 

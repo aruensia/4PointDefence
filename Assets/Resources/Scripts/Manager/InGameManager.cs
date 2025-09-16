@@ -243,7 +243,7 @@ public class InGameManager : MonoBehaviour
         tempunit.GetComponent<ForceUnit>().forceUnitData.Armor = tempdata.Armor;
         tempunit.GetComponent<ForceUnit>().forceUnitData.Damage = tempdata.Damage;
         tempunit.GetComponent<ForceUnit>().forceUnitData.AttackRange = tempdata.AttackRange;
-        tempunit.GetComponent<ForceUnit>().forceUnitData.MoveSpeed = tempdata.MoveSpeed;
+        tempunit.GetComponent<ForceUnit>().forceUnitData.AttackSpeed = tempdata.AttackSpeed;
         tempunit.GetComponent<ForceUnit>().forceUnitData.Cost = tempdata.Cost;
     }
 

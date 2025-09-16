@@ -1,5 +1,5 @@
-﻿Index,UnitType,Name,Hp,Armor,Damage,AttackRange,MoveSpeed,UnitSize,UnitState,ManufactureTime,SkillCount,Cost
+﻿Index,UnitType,Name,Hp,Armor,Damage,AttackRange,AttackSpeed,UnitSize,UnitState,ManufactureTime,SkillCount,Cost
 int,UnitType,string,int,int,int,float,float,UnitSize,UnitState,int,int,int
-1100000,1,군인,30,3,3,5,0,1,1,10,2,10
-1100001,1,강화 군인,70,4,5,5,0,1,1,5,1,20
-1100002,1,정예 군인,150,5,10,5,0,1,1,5,1,40
+1100000,1,군인,30,3,3,5,5,1,1,10,2,10
+1100001,1,강화 군인,70,4,5,5,4,1,1,5,1,20
+1100002,1,정예 군인,150,5,10,5,3,1,1,5,1,40

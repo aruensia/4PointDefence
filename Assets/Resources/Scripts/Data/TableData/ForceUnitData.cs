@@ -11,7 +11,7 @@ public class ForceUnitData : SubActionData.TableData
     private int _armor;
     private int _damage;
     private float _attackRange;
-    private float _moveSpeed;
+    private float _attackSpeed;
     private int _useActionButtonCount;
     private int _skillCount;
     private int _cost;
@@ -79,10 +79,10 @@ public class ForceUnitData : SubActionData.TableData
         set { _attackRange = value; }
     }
 
-    public float MoveSpeed
+    public float AttackSpeed
     {
-        get { return _moveSpeed; }
-        set { _moveSpeed = value; }
+        get { return _attackSpeed; }
+        set { _attackSpeed = value; }
     }
 
     public int UseActionButtonCount

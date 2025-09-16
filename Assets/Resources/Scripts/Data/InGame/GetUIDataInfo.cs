@@ -158,7 +158,7 @@ public class GetUIDataInfo : MonoBehaviour
                     GameInfoText[2].text = "방어력 : " + tempForceData.forceUnitData.Armor;
                     GameInfoText[3].text = "데미지 : " + tempForceData.forceUnitData.Damage;
                     GameInfoText[4].text = "공격 거리 : " + tempForceData.forceUnitData.AttackRange;
-                    GameInfoText[5].text = "이동 속도 : " + tempForceData.forceUnitData.MoveSpeed;
+                    GameInfoText[5].text = "이동 속도 : " + tempForceData.forceUnitData.AttackSpeed;
 
                     tempForceData.forceUnitData.UseActionButtonCount = actionButtonCount;
                     var tempforcesubactioncount = tempForceData.forceUnitData.UseActionButtonCount + tempForceData.forceUnitData.UseSkillCount;
