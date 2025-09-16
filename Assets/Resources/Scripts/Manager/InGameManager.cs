@@ -72,6 +72,7 @@ public class InGameManager : MonoBehaviour
     {
         currentStageData = (StageData)Manager.Instance.dataloader.tableDatas["StageTable"][Manager.Instance.inGameManager.currentStageLevel];
         OnSelectUnitTraining += UnitTrainingBoxCheck;
+        OnGameEnd += GameOverPopupOn;
 
         manager = GameObject.Find("Manager").GetComponent<Manager>();
         userLifeObject = GameObject.Find("SetUnitPos");
@@ -269,9 +270,13 @@ public class InGameManager : MonoBehaviour
         OnSelectUnitTraining.Invoke();
     }
 
-    public void GameOverPopupOff()
+    public void GameOverPopupOn()
     {
         gameOverPopup.gameObject.SetActive(true);
+    }
+
+    public void GameOverPopupOff()
+    {
         SceneManager.LoadScene("Title");
     }
 

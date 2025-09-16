@@ -20,6 +20,7 @@ public class GetUIDataInfo : MonoBehaviour
     public TextMeshProUGUI stageText;
     public TextMeshProUGUI currentEnemyCount;
     public TextMeshProUGUI GameTime;
+    public TextMeshProUGUI gameOverGetMoney;
     public TextMeshProUGUI currentGetMoney;
     public TextMeshProUGUI totalKillCount;
 
@@ -48,6 +49,7 @@ public class GetUIDataInfo : MonoBehaviour
         Manager.Instance.inGameManager.DataChange += PrintGold;
         Manager.Instance.inGameManager.DataChange += PrintStageText;
         Manager.Instance.inGameManager.DataChange += PrintCurrentEnemyCount;
+        Manager.Instance.inGameManager.DataChange += PringCurrentGetMoney;
         Manager.Instance.inGameManager.DataChange += PrintWaitNextStegeTime;
         Manager.Instance.inGameManager.OnGameEnd += SetupGameOverInfo;
         GameTime.gameObject.SetActive(false);
@@ -94,7 +96,7 @@ public class GetUIDataInfo : MonoBehaviour
     void SetupGameOverInfo()
     {
         totalKillCount.text = "ÃÑ Ã³Ä¡ Àû : " + Manager.Instance.inGameManager.totalkillCount.ToString();
-        currentGetMoney.text = "È¹µæ ÀçÈ­ : " + Manager.Instance.inGameManager.getMoney.ToString();
+        gameOverGetMoney.text = "È¹µæ ÀçÈ­ : " + Manager.Instance.inGameManager.getMoney.ToString();
     }
 
     void GameTimeOn()
@@ -115,6 +117,11 @@ public class GetUIDataInfo : MonoBehaviour
     void PrintGold()
     {
         GameInfoText[6].text = Manager.Instance.inGameManager.playerData._defaultGold.ToString();
+    }
+
+    void PringCurrentGetMoney()
+    {
+        currentGetMoney.text = "¾òÀº µ· : "+Manager.Instance.inGameManager.getMoney.ToString();
     }
 
     void SetMouseInputData()

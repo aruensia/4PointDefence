@@ -127,9 +127,7 @@ public class EnemyUnit : MonoBehaviour , SubActionData.IUnitAction
         }
         else
         {
-            //moveTargetUnit = Manager.Instance.inGameManager.baseCamp;
             this.moveTargetUnit = null;
-            //attackTargetUnit = Manager.Instance.inGameManager.baseCamp;
             this.attackTargetUnit = null;
             this.forceUnitSearch = false;
 
@@ -137,7 +135,6 @@ public class EnemyUnit : MonoBehaviour , SubActionData.IUnitAction
 
             targetList.Clear();
             tempTargetList.Clear();
-            //transform.position = Vector3.MoveTowards(transform.position, attackTargetUnit.transform.position, enemyUnitData.MoveSpeed * Time.deltaTime);
         }
     }
 
