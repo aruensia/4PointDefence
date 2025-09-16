@@ -61,6 +61,7 @@ public class InGameManager : MonoBehaviour
     public int totalkillCount;
 
     public int getMoney;
+    public FirebaseDbMgr firebaseDbMgr;
 
     private void Awake()
     {
@@ -75,6 +76,7 @@ public class InGameManager : MonoBehaviour
         OnGameEnd += GameOverPopupOn;
 
         manager = GameObject.Find("Manager").GetComponent<Manager>();
+        firebaseDbMgr = GameObject.Find("DbManager").GetComponent<FirebaseDbMgr>();
         userLifeObject = GameObject.Find("SetUnitPos");
 
         unitSetting.SetupStartBuiding();
@@ -250,7 +252,9 @@ public class InGameManager : MonoBehaviour
     public void OnGameOver()
     {
         isGameOver = true;
+        playerData.playerMoney = playerData.playerMoney + getMoney;
         Manager.Instance.player = playerData;
+        firebaseDbMgr.SaveToDb();
         OnGameEnd.Invoke();
     }
 

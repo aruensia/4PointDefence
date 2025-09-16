@@ -80,6 +80,7 @@ public class TitleManager : MonoBehaviour
         firebaseDbMgr.LoadToDb();
         yield return new WaitUntil(() => playerData);
         EnhancePanel.SetActive(true);
+        Debug.Log("데이터 로드 완료");
         playerData = false;
     }
 
@@ -92,6 +93,7 @@ public class TitleManager : MonoBehaviour
     public void LoginSuccess()
     {
         Debug.Log("로그인 ");
+        StartCoroutine(WaitPlayerData());
         LoginPanel.SetActive(false);
     }
 
