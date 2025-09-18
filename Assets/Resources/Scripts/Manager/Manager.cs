@@ -11,6 +11,8 @@ public class Manager : MonoBehaviour
 {
     static Manager instance;
     public Dictionary<string, List<SubActionData.TableData>> usebleData;
+    public bool IsGameOn = false;
+
 
     public static Manager Instance
     {

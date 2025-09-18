@@ -686,10 +686,10 @@ Animator:
   m_GameObject: {fileID: 6418564950370570221}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f3392e95529ae7540ad53657e3d0ce7d, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d88dede1e78bc3341ab7debb66c0defd, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -732,11 +732,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df820ea32796d324a8d5e26234ca3909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetUnit: {fileID: 0}
+  attackTargetUnit: {fileID: 0}
+  moveTargetUnit: {fileID: 0}
   Engage: []
+  isAttack: 0
+  forceUnitSearch: 0
   onEngage: 0
-  TargetList: []
+  targetList: []
+  tempTargetList: []
   tempUnitState: 0
+  forceobj: []
 --- !u!54 &5922421878714962082
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -320,7 +320,7 @@ Animator:
   m_GameObject: {fileID: 1088150101818539888}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 040d65e685ff26942ab4aa696c1b782b, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 43be405b123e55543ad3df22200462ec, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -344,8 +344,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetUnit: {fileID: 0}
-  onEngage: 0
+  Engage: []
+  targetList: []
+  tmpeTargeList: []
+  enemyUnitSearch: 0
+  isAttack: 0
+  isdie: 0
   engage: 0
+  enemyobj: []
 --- !u!136 &-2430239764103190174
 CapsuleCollider:
   m_ObjectHideFlags: 0

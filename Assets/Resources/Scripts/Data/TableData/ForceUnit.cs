@@ -6,6 +6,7 @@ using UnityEngine;
 public class ForceUnit : MonoBehaviour
 {
     public ForceUnitData forceUnitData = new ForceUnitData();
+    public Animator forceUnitAnimator;
     public GameObject targetUnit;
 
     public Collider[] Engage;
@@ -22,6 +23,11 @@ public class ForceUnit : MonoBehaviour
     float tempradius;
 
     [SerializeField] List<GameObject> enemyobj;
+
+    private void Awake()
+    {
+        forceUnitAnimator = GetComponent<Animator>();
+    }
 
     void Start()
     {
@@ -103,6 +109,8 @@ public class ForceUnit : MonoBehaviour
 
     void CheckAttack()
     {
+        forceUnitAnimator.SetBool("fightUnit",true);
+
         if (!this.isAttack)
         {
             this.isAttack = true;
@@ -143,14 +151,23 @@ public class ForceUnit : MonoBehaviour
             enemyobj[i].GetComponent<EnemyUnit>().onEngage = false;
             enemyobj[i].GetComponent<EnemyUnit>().isAttack = false;
 
-            enemyobj[i].GetComponent<EnemyUnit>().targetList.Clear();
-            enemyobj[i].GetComponent<EnemyUnit>().tempTargetList.Clear();
+            enemyobj[i].GetComponent<EnemyUnit>().targetList.Remove(this.gameObject);
+            enemyobj[i].GetComponent<EnemyUnit>().tempTargetList.Remove(this.gameObject);
             enemyobj[i].GetComponent<EnemyUnit>().forceobj.Clear();
 
-
+            enemyobj[i].GetComponent<EnemyUnit>().enemyUnitAnimator.SetBool("OnFight", false);
             enemyobj[i].GetComponent<EnemyUnit>().enemyUnitData.unitState = UnitState.Idle;
         }
         Manager.Instance.inGameManager.ForceUnitdie.Invoke();
+
+        StartCoroutine(DestroyModel());
+    }
+
+    IEnumerator DestroyModel()
+    {
+        forceUnitAnimator.SetBool("dieUnit", true);
+
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 

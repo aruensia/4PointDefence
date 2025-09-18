@@ -36,6 +36,16 @@ public class TitleManager : MonoBehaviour
 
     public static bool playerData = false;
 
+    private void OnEnable()
+    {
+        if(Manager.Instance.IsGameOn == true)
+        {
+            LoginPanel.SetActive(false);
+            firebaseDbMgr = GameObject.Find("Manager").transform.GetChild(0).GetComponent<FirebaseDbMgr>();
+            StartCoroutine(WaitPlayerData());
+        }
+    }
+
     private void Start()
     {
         firebaseDbMgr = GameObject.Find("Manager").transform.GetChild(0).GetComponent<FirebaseDbMgr>();
@@ -72,15 +82,14 @@ public class TitleManager : MonoBehaviour
 
     public void EnhancePanelOn()
     {
-        StartCoroutine(WaitPlayerData());
+        EnhancePanel.SetActive(true);
     }
 
     IEnumerator WaitPlayerData()
     {
         firebaseDbMgr.LoadToDb();
         yield return new WaitUntil(() => playerData);
-        EnhancePanel.SetActive(true);
-        Debug.Log("데이터 로드 완료");
+        Debug.Log("Firebase에서 유저 id를 비교하여 유저 계정 정보를 불러왔음");
         playerData = false;
     }
 
@@ -94,6 +103,7 @@ public class TitleManager : MonoBehaviour
     {
         Debug.Log("로그인 ");
         StartCoroutine(WaitPlayerData());
+        Manager.Instance.IsGameOn = true;
         LoginPanel.SetActive(false);
     }
 

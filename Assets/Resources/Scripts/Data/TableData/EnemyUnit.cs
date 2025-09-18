@@ -8,6 +8,8 @@ using UnityEngine.Rendering;
 
 public class EnemyUnit : MonoBehaviour , SubActionData.IUnitAction
 {
+    public Animator enemyUnitAnimator;
+
     public EnemyUnitData enemyUnitData = new EnemyUnitData();
     public GameObject attackTargetUnit;
     public GameObject moveTargetUnit;
@@ -30,6 +32,11 @@ public class EnemyUnit : MonoBehaviour , SubActionData.IUnitAction
 
     public List<GameObject> forceobj;
 
+    private void Awake()
+    {
+        enemyUnitAnimator = GetComponent<Animator>();
+    }
+
     void Start()
     {
         Manager.Instance.inGameManager.ForceUnitdie += CheckFightState;
@@ -41,6 +48,9 @@ public class EnemyUnit : MonoBehaviour , SubActionData.IUnitAction
 
     void CheckAttack()
     {
+
+        enemyUnitAnimator.SetBool("OnFight", true);
+
         if(!isAttack)
         {
             isAttack = true;
@@ -52,6 +62,10 @@ public class EnemyUnit : MonoBehaviour , SubActionData.IUnitAction
     {
         while(enemyUnitData.unitState == UnitState.Fight)
         {
+            if(Manager.Instance.inGameManager.isGameOver == true)
+            {
+                break;
+            }
             UnitAttack();
 
             yield return new WaitForSeconds(5);
@@ -60,7 +74,7 @@ public class EnemyUnit : MonoBehaviour , SubActionData.IUnitAction
 
     public void UnitAttack()
     {
-        if (attackTargetUnit.gameObject.activeSelf)
+        if (attackTargetUnit.gameObject.activeSelf || Manager.Instance.inGameManager.isGameOver == false)
         {
             if(attackTargetUnit.CompareTag("ForceUnit"))
             {
@@ -69,11 +83,6 @@ public class EnemyUnit : MonoBehaviour , SubActionData.IUnitAction
             else if (attackTargetUnit.CompareTag("StructUnit"))
             {
                 this.attackTargetUnit.GetComponent<StructUnit>().TakeDamage(this.enemyUnitData.Damage, this.gameObject);
-
-                if (this.attackTargetUnit.GetComponent<StructUnit>().isdie == true)
-                {
-                    Manager.Instance.inGameManager.OnGameOver();
-                }
             }
         }
     }
@@ -160,7 +169,7 @@ public class EnemyUnit : MonoBehaviour , SubActionData.IUnitAction
             {
                 if (item.gameObject.activeSelf)
                 {
-                    if(item.CompareTag("ForceUnit"))
+                    if(item.CompareTag("ForceUnit") && item.GetComponent<ForceUnit>().isdie == false)
                     {
                         this.forceUnitCount++;
                         this.tempTargetList.Add(item.gameObject);
@@ -237,6 +246,7 @@ public class EnemyUnit : MonoBehaviour , SubActionData.IUnitAction
             forceobj[i].GetComponent<ForceUnit>().targetList.Clear();
             forceobj[i].GetComponent<ForceUnit>().tmpeTargeList.Clear();
 
+            forceobj[i].GetComponent<ForceUnit>().forceUnitAnimator.SetBool("fightUnit", false);
             forceobj[i].GetComponent<ForceUnit>().forceUnitData.unitState = UnitState.Idle;
         }
     }

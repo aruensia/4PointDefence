@@ -12,7 +12,7 @@ public class StructUnit : MonoBehaviour
         this.unitData.Hp = this.unitData.Hp - damage;
         if (this.unitData.Hp <= 0)
         {
-            isdie = true;
+            Manager.Instance.inGameManager.isGameOver = true;
 
             Debug.Log(this.gameObject.name + " 가 죽었습니다.");
             Manager.Instance.inGameManager.OnGameOver();

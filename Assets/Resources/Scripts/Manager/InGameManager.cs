@@ -26,7 +26,7 @@ public class InGameManager : MonoBehaviour
     public event Action NextLevel;
     public event Action OnGameEnd;
 
-    bool isGameOver = false;
+    public bool isGameOver = false;
 
     [Header("[생성하는 몬스터 프리팹]")]
     public GameObject monsterPrefab;
@@ -41,7 +41,6 @@ public class InGameManager : MonoBehaviour
     public List<GameObject> unitInstantiatePos;
 
     public GameObject userLifeObject;
-    public GameObject forceUnitPrefab;
 
     public GameObject baseCamp;
     public GameObject gameOverPopup;
@@ -158,6 +157,8 @@ public class InGameManager : MonoBehaviour
         var tempgold = playerData._defaultGold + playerData.totalGoldEnhance;
 
         Debug.Log("시작 시 기본 재화 + 강화값 " + tempgold);
+        Debug.Log("시작 시 기본 재화 " + playerData._defaultGold);
+        Debug.Log("시작 시 강화값 " + playerData.totalGoldEnhance);
 
         StartCoroutine(UpdateGetGold(tempgold));
     }
@@ -239,7 +240,7 @@ public class InGameManager : MonoBehaviour
         setpos.transform.localPosition = _mouseClick.transform.gameObject.transform.localPosition;
         var tempunit = Instantiate(Manager.Instance.inGameManager.selectedUnit, setpos);
         ForceUnitData tempdata = (ForceUnitData)Manager.Instance.dataloader.tableDatas["ForceUnitTable"][Manager.Instance.inGameManager.currentUnitNum];
-        tempunit.transform.SetParent(Manager.Instance.inGameManager.battleField.transform);
+        tempunit.transform.SetParent(Manager.Instance.inGameManager.unitFiled.transform);
         tempunit.GetComponent<ForceUnit>().forceUnitData.Name = tempdata.Name;
         tempunit.GetComponent<ForceUnit>().forceUnitData.Hp = tempdata.Hp;
         tempunit.GetComponent<ForceUnit>().forceUnitData.Armor = tempdata.Armor;
@@ -253,6 +254,7 @@ public class InGameManager : MonoBehaviour
     {
         isGameOver = true;
         playerData.playerMoney = playerData.playerMoney + getMoney;
+        playerData._defaultGold = 1;
         Manager.Instance.player = playerData;
         firebaseDbMgr.SaveToDb();
         OnGameEnd.Invoke();

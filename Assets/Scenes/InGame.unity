@@ -425,8 +425,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -87.5, y: -22.9}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 27.7905, y: -22.9}
+  m_SizeDelta: {x: 430.5811, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &36827280
 MonoBehaviour:
@@ -4644,6 +4644,7 @@ MonoBehaviour:
   enemycount: 0
   totalkillCount: 0
   getMoney: 0
+  firebaseDbMgr: {fileID: 0}
 --- !u!136 &526726835
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16888,8 +16889,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -87.5, y: 91.95715}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 27.7905, y: 91.95715}
+  m_SizeDelta: {x: 430.5811, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2086547908
 MonoBehaviour:
