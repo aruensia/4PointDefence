@@ -8,6 +8,7 @@ public class ForceUnit : MonoBehaviour
     public ForceUnitData forceUnitData = new ForceUnitData();
     public Animator forceUnitAnimator;
     public GameObject targetUnit;
+    public Transform muzzle;
 
     public Collider[] Engage;
     public List<GameObject> targetList;
@@ -22,6 +23,8 @@ public class ForceUnit : MonoBehaviour
 
     float tempradius;
 
+    MeshRenderer muzzleFlash;
+
     [SerializeField] List<GameObject> enemyobj;
 
     private void Awake()
@@ -34,6 +37,8 @@ public class ForceUnit : MonoBehaviour
         forceUnitData.unitState = UnitState.Start;
         tempradius = forceUnitData.AttackRange;
         targetUnit = null;
+        muzzleFlash = muzzle.GetComponentInChildren<MeshRenderer>();
+        muzzleFlash.enabled = false;
         StartForceUnit();
     }
 
@@ -67,6 +72,14 @@ public class ForceUnit : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator SetMuzzleFlash()
+    {
+        muzzleFlash.enabled = true;
+
+        yield return new WaitForSeconds(0.1f);
+        muzzleFlash.enabled = false;
     }
 
     void GoPlinState()
@@ -120,11 +133,11 @@ public class ForceUnit : MonoBehaviour
 
     IEnumerator UnitIsAttack()
     {
-
         while (this.forceUnitData.unitState == UnitState.Fight)
         {
+            StartCoroutine(SetMuzzleFlash());
             UnitAttack();
-
+            forceUnitAnimator.SetBool("fightUnit", false);
             yield return new WaitForSeconds(forceUnitData.AttackSpeed);
         }
     }

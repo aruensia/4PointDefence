@@ -28,7 +28,6 @@ public class GetUIDataInfo : MonoBehaviour
     private EnemyUnit tempEnemyData;
     private ForceUnit tempForceData;
     private StructUnit tempStructData;
-    bool clickBackground = false;
 
     InputActionMap mainActionMap;
     InputAction qInput;
@@ -41,7 +40,6 @@ public class GetUIDataInfo : MonoBehaviour
     {
         Manager.Instance.inGameUi = this;
         GameInfoText[6].text = " ";
-
     }
 
     private void Start()

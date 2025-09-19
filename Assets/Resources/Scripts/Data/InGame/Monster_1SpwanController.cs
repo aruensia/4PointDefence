@@ -15,7 +15,6 @@ public class Monster_1SpwanController : MonoBehaviour
     Queue<EnemyUnit> enemyUnitPool = new Queue<EnemyUnit>();
     Queue<GameObject> enemyWaveGroupPool = new Queue<GameObject>();
 
-    bool enemyGroupPoolCheck = false;
     bool isSetMonster = true;
     int enemyGroupPoolCount;
     [SerializeField] int spwanTime = 5;

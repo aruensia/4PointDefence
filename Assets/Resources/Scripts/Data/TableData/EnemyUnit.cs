@@ -17,7 +17,6 @@ public class EnemyUnit : MonoBehaviour , SubActionData.IUnitAction
     public Collider[] Engage;
     bool isdie = false;
     public bool isAttack = false;
-    bool targetdiecheck = false;
     public bool forceUnitSearch = false;
     public bool onEngage = false;
 
