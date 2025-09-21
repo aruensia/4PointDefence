@@ -9,14 +9,9 @@ public class DefaultUnitSetting : MonoBehaviour
         Manager.Instance.inGameManager.unitSetting = this;
     }
 
-    private void Start()
-    {
-        
-    }
-
     public void SetupStartBuiding()
     {
-        var tempbuild = Instantiate(Manager.Instance.inGameManager.StructbBuildingPrefab[0].GetComponent<StructUnit>(), transform);
+        var tempbuild = Instantiate(Manager.Instance.inGameManager.StructbBuildingPrefab[0].transform.GetChild(0).GetComponent<StructUnit>(), transform);
         StructUnitData setbuild = (StructUnitData)Manager.Instance.dataloader.tableDatas["StructUnitTable"][0];
 
         tempbuild.unitData.Name = setbuild.Name;
@@ -27,10 +22,4 @@ public class DefaultUnitSetting : MonoBehaviour
         tempbuild.unitData.MoveSpeed = setbuild.MoveSpeed;
         Manager.Instance.inGameManager.baseCamp = tempbuild.gameObject;
     }
-
-    public void SetupStartUnit()
-    {
-        // var tempunit = Instantiate();
-    }
-
 }

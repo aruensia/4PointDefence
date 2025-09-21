@@ -8585,6 +8585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7199029a53bb07d4e8b6c787e2d39ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsGameOn: 0
   inGameManager: {fileID: 0}
   inGameUi: {fileID: 0}
 --- !u!4 &1858702060

@@ -248,6 +248,9 @@ public class InGameManager : MonoBehaviour
         tempunit.GetComponent<ForceUnit>().forceUnitData.AttackRange = tempdata.AttackRange;
         tempunit.GetComponent<ForceUnit>().forceUnitData.AttackSpeed = tempdata.AttackSpeed;
         tempunit.GetComponent<ForceUnit>().forceUnitData.Cost = tempdata.Cost;
+
+        Quaternion vector3 = Quaternion.Euler(0, 180f, 0);
+        tempunit.transform.rotation = vector3;
     }
 
     public void OnGameOver()

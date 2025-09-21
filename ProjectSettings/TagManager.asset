@@ -9,6 +9,7 @@ TagManager:
   - EnemyGroup
   - EnterTriger
   - StructUnit
+  - Props
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - Building
   - BackGround
   - SetPos
-  - 
-  - 
+  - Props
+  - MinimapIcon
   - 
   - 
   - 
