@@ -53,6 +53,8 @@ public class EnemyUnit : MonoBehaviour , SubActionData.IUnitAction
         if(!isAttack)
         {
             isAttack = true;
+
+            this.transform.LookAt(attackTargetUnit.transform);
             StartCoroutine(UnitIsAttack());
         }
     }
@@ -96,9 +98,11 @@ public class EnemyUnit : MonoBehaviour , SubActionData.IUnitAction
         if(this.moveTargetUnit == null)
         {
             this.moveTargetUnit = Manager.Instance.inGameManager.baseCamp;
+            this.transform.LookAt(Manager.Instance.inGameManager.baseCamp.transform);
         }
 
         Vector3 direction = (moveTargetUnit.transform.position - gameObject.GetComponent<Rigidbody>().position).normalized;
+        this.transform.LookAt(moveTargetUnit.transform);
         gameObject.GetComponent<Rigidbody>().velocity = direction * (enemyUnitData.MoveSpeed * 0.6f);
     }
 
@@ -124,9 +128,10 @@ public class EnemyUnit : MonoBehaviour , SubActionData.IUnitAction
         if( moveTargetUnit != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, attackTargetUnit.transform.position, enemyUnitData.MoveSpeed * Time.deltaTime);
+            this.transform.LookAt(attackTargetUnit.transform);
 
             var distance = Vector3.Distance(transform.position, attackTargetUnit.transform.position);
-            if (distance <= 1f)
+            if (distance <= 0.3f)
             {
                 this.onEngage = true;
                 this.enemyUnitData.unitState = UnitState.Fight;

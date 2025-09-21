@@ -114,7 +114,8 @@ public class ForceUnit : MonoBehaviour
     void SetupAttackRange()
     {
         var distance = Vector3.Distance(transform.position, targetUnit.transform.position);
-        if( distance <= tempradius)
+        this.transform.LookAt(targetUnit.transform);
+        if ( distance <= tempradius)
         {
             this.forceUnitData.unitState = UnitState.Fight;
         }
@@ -127,6 +128,7 @@ public class ForceUnit : MonoBehaviour
         if (!this.isAttack)
         {
             this.isAttack = true;
+            this.transform.LookAt(targetUnit.transform);
             StartCoroutine(UnitIsAttack());
         }
     }

@@ -21,5 +21,6 @@ public class DefaultUnitSetting : MonoBehaviour
         tempbuild.unitData.AttackRange = setbuild.AttackRange;
         tempbuild.unitData.MoveSpeed = setbuild.MoveSpeed;
         Manager.Instance.inGameManager.baseCamp = tempbuild.gameObject;
+
     }
 }
