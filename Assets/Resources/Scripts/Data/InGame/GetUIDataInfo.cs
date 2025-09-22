@@ -202,8 +202,6 @@ public class GetUIDataInfo : MonoBehaviour
                     {
                         if (Manager.Instance.inGameManager.playerData._defaultGold >= Manager.Instance.inGameManager.selectedUnit.GetComponent<ForceUnit>().forceUnitData.Cost)
                         {
-                            Debug.Log(mouseClick.transform.gameObject.name);
-
                             if(mouseClick.transform.gameObject.GetComponent<PosData>().isSetUnit == false )
                             {
                                 Manager.Instance.inGameManager.playerData._defaultGold = Manager.Instance.inGameManager.playerData._defaultGold - Manager.Instance.inGameManager.selectedUnit.GetComponent<ForceUnit>().forceUnitData.Cost;
@@ -427,8 +425,10 @@ public class GetUIDataInfo : MonoBehaviour
         {
             var tempUnitData = Manager.Instance.dataloader.tableDatas["ForceUnitTable"][i];
             trainingUnitList[i].GetComponent<ForceUnit>().forceUnitData = (ForceUnitData)tempUnitData;
-            buttonList[i].transform.GetChild(0).gameObject.SetActive(true);
-            buttonList[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Manager.Instance.inGameManager.userUnit[i].gameObject.GetComponent<ForceUnit>().forceUnitData.Cost.ToString();
+            buttonList[i].transform.GetChild(2).gameObject.SetActive(true);
+            buttonList[i].transform.GetChild(1).GetComponent<Image>().sprite = Manager.Instance.inGameManager.userUnit[i].gameObject.GetComponent<ForceUnit>().unitIcon;
+            buttonList[i].transform.GetChild(1).gameObject.SetActive(true);
+            buttonList[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = Manager.Instance.inGameManager.userUnit[i].gameObject.GetComponent<ForceUnit>().forceUnitData.Cost.ToString();
         }
     }
 }

@@ -347,6 +347,7 @@ MonoBehaviour:
   forceUnitAnimator: {fileID: 0}
   targetUnit: {fileID: 0}
   muzzle: {fileID: 38454195955318813}
+  unitIcon: {fileID: 21300000, guid: 9879af9b9d82e2d40922b54dfc85d4c8, type: 3}
   Engage: []
   targetList: []
   tmpeTargeList: []

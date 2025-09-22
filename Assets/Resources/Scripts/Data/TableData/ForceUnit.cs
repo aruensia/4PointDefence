@@ -9,6 +9,7 @@ public class ForceUnit : MonoBehaviour
     public Animator forceUnitAnimator;
     public GameObject targetUnit;
     public Transform muzzle;
+    public Sprite unitIcon;
 
     public Collider[] Engage;
     public List<GameObject> targetList;
