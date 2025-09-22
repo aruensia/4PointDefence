@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class ForceUnit : MonoBehaviour
@@ -10,6 +9,8 @@ public class ForceUnit : MonoBehaviour
     public GameObject targetUnit;
     public Transform muzzle;
     public Sprite unitIcon;
+    public List<AudioClip> sfxSound;
+    AudioSource unitAudioSource;
 
     public Collider[] Engage;
     public List<GameObject> targetList;
@@ -31,6 +32,8 @@ public class ForceUnit : MonoBehaviour
     private void Awake()
     {
         forceUnitAnimator = GetComponent<Animator>();
+        unitAudioSource = GetComponent<AudioSource>();
+        unitAudioSource.volume = Manager.Instance.inGameManager.soundManagerObj.GetComponent<AudioSource>().volume;
     }
 
     void Start()
@@ -79,7 +82,7 @@ public class ForceUnit : MonoBehaviour
     {
         muzzleFlash.enabled = true;
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         muzzleFlash.enabled = false;
     }
 
@@ -134,13 +137,35 @@ public class ForceUnit : MonoBehaviour
         }
     }
 
+    void AttackAction()
+    {
+        forceUnitAnimator.SetBool("fightUnit", false);
+
+        //for (int i = 0; i < sfxSound.Count; i++)
+        //{
+        //    unitAudioSource.clip = sfxSound[i];
+        //    Debug.Log("클립 이름" +  unitAudioSource.clip.name);
+        //    unitAudioSource.PlayOneShot(sfxSound[i]);
+        //}
+
+        foreach(AudioClip clip in sfxSound)
+        {
+            unitAudioSource.PlayOneShot(clip);
+        }
+    }
+
     IEnumerator UnitIsAttack()
     {
         while (this.forceUnitData.unitState == UnitState.Fight)
         {
+            if(this.forceUnitData.unitState != UnitState.Fight)
+            {
+                break;
+            }
+
             StartCoroutine(SetMuzzleFlash());
             UnitAttack();
-            forceUnitAnimator.SetBool("fightUnit", false);
+            AttackAction();
             yield return new WaitForSeconds(forceUnitData.AttackSpeed);
         }
     }

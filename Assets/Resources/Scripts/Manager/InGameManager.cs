@@ -13,6 +13,7 @@ public class InGameManager : MonoBehaviour
 {
     RaycastHit mouseClick;
     public LayerMask rayMask;
+    public GameObject soundManagerObj;
 
     public PlayerInfo playerData;
     public DefaultUnitSetting unitSetting;
@@ -65,6 +66,8 @@ public class InGameManager : MonoBehaviour
     private void Awake()
     {
         Manager.Instance.inGameManager = this;
+        soundManagerObj = GameObject.Find("SoundManager").gameObject;
+
         playerData = Manager.Instance.player;
     }
 
