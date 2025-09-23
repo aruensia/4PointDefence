@@ -79,4 +79,9 @@ public class StructUnitData : SubActionData.TableData
         set { _moveSpeed = value; }
     }
 
+    public int SkillCount
+    {
+        get { return _skillCount; }
+        set { _skillCount = value; }
+    }
 }

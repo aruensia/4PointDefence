@@ -9,6 +9,7 @@ public class EnhanceData : MonoBehaviour
     event Action EnhanceUI;
 
     public GameObject text_currentPlayerMoney;
+    public GameObject text_currentGoldEnhance;
     public GameObject text_currentPlayerunit1;
     public GameObject text_currentPlayerUnit2;
     public GameObject text_currentPlayerUnit3;
@@ -18,17 +19,19 @@ public class EnhanceData : MonoBehaviour
 
     //강화화면에 들어왔을 때, 현재 유저 강화 수치를 임시로 보관함.
     int originPlayerMoney;
+    float originGoldEnhance;
     int originPlayerunit1UpgradeCount;
     int originPlayerunit2UpgradeCount;
     int originPlayerunit3UpgradeCount;
 
     //현재 유저의 강화 상태를 나타냄
     int currentPlayerMoney;
+    float currentGoldEnhance;
     int currentPlayerunit1;
     int currentPlayerunit2;
     int currentPlayerunit3;
 
-    int cost = 30;
+    int cost = 10;
 
     private void OnEnable()
     {
@@ -46,6 +49,7 @@ public class EnhanceData : MonoBehaviour
     void SetOriginData()
     {
         originPlayerMoney = Manager.Instance.player.playerMoney;
+        originGoldEnhance = Manager.Instance.player.totalGoldEnhance;
         originPlayerunit1UpgradeCount = Manager.Instance.player.Unit_1_Enhance;
         originPlayerunit2UpgradeCount = Manager.Instance.player.Unit_2_Enhance;
         originPlayerunit3UpgradeCount = Manager.Instance.player.Unit_3_Enhance;
@@ -54,6 +58,7 @@ public class EnhanceData : MonoBehaviour
     void SetCurrentData()
     {
         currentPlayerMoney = Manager.Instance.player.playerMoney;
+        currentGoldEnhance = Manager.Instance.player.totalGoldEnhance;
         currentPlayerunit1 = Manager.Instance.player.Unit_1_Enhance;
         currentPlayerunit2 = Manager.Instance.player.Unit_2_Enhance;
         currentPlayerunit3 = Manager.Instance.player.Unit_3_Enhance;
@@ -65,6 +70,7 @@ public class EnhanceData : MonoBehaviour
     public void ResetUpgradeValue()
     {
         currentPlayerMoney = originPlayerMoney;
+        currentGoldEnhance = originGoldEnhance;
         currentPlayerunit1 = originPlayerunit1UpgradeCount;
         currentPlayerunit2 = originPlayerunit2UpgradeCount;
         currentPlayerunit3 = originPlayerunit3UpgradeCount;
@@ -78,8 +84,6 @@ public class EnhanceData : MonoBehaviour
         text_currentPlayerunit1.GetComponent<TextMeshProUGUI>().text = "군인 Lv : " + currentPlayerunit1;
         text_currentPlayerUnit2.GetComponent<TextMeshProUGUI>().text = "강화 군인 Lv : " + currentPlayerunit2;
         text_currentPlayerUnit3.GetComponent<TextMeshProUGUI>().text = "정예 군인 Lv : " + currentPlayerunit3;
-
-        Debug.Log("현재 재화 돈 : " + currentPlayerMoney + " 유닛1 lv : " + currentPlayerunit1 + " 유닛2 lv : " + currentPlayerunit2 + " 유닛3 lv : " + currentPlayerunit3);
     }
 
     public void UpgradeUserUnit(int initbutton)
@@ -130,6 +134,7 @@ public class EnhanceData : MonoBehaviour
     public void SaveUpGrade()
     {
         Manager.Instance.player.playerMoney = currentPlayerMoney;
+        Manager.Instance.player.totalGoldEnhance = currentGoldEnhance;
         Manager.Instance.player.Unit_1_Enhance = currentPlayerunit1;
         Manager.Instance.player.Unit_2_Enhance = currentPlayerunit2;
         Manager.Instance.player.Unit_3_Enhance = currentPlayerunit3;

@@ -64,7 +64,6 @@ public class DataLoader
                         tempEnemyUnit.MoveSpeed = float.Parse(values[7]);
                         tempEnemyUnit.unitSize = (UnitSize)int.Parse(values[8]);
                         tempEnemyUnit.unitState = (UnitState)int.Parse(values[9]);
-                        tempEnemyUnit.UseSkillCount = int.Parse(values[11]);
 
                         item.Value.Add(tempEnemyUnit);
                     }

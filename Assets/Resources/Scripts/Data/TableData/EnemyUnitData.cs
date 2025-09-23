@@ -87,10 +87,4 @@ public class EnemyUnitData : SubActionData.TableData
         get { return _useActionButtonCount; }
         set { _useActionButtonCount = value; }
     }
-
-    public int UseSkillCount
-    {
-        get { return _skillCount; }
-        set { _skillCount = value; }
-    }
 }

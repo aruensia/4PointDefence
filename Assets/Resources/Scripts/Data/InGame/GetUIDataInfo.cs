@@ -24,7 +24,6 @@ public class GetUIDataInfo : MonoBehaviour
     public TextMeshProUGUI currentGetMoney;
     public TextMeshProUGUI totalKillCount;
 
-    int actionButtonCount = 3;
     private EnemyUnit tempEnemyData;
     private ForceUnit tempForceData;
     private StructUnit tempStructData;
@@ -114,7 +113,7 @@ public class GetUIDataInfo : MonoBehaviour
 
     void PrintGold()
     {
-        GameInfoText[6].text = Manager.Instance.inGameManager.playerData._defaultGold.ToString();
+        GameInfoText[6].text = Manager.Instance.inGameManager.playerData._defaultGold.ToString("F0");
     }
 
     void PringCurrentGetMoney()
@@ -158,10 +157,10 @@ public class GetUIDataInfo : MonoBehaviour
                     GameInfoText[4].text = "공격 거리 : " + tempForceData.forceUnitData.AttackRange;
                     GameInfoText[5].text = "이동 속도 : " + tempForceData.forceUnitData.AttackSpeed;
 
-                    tempForceData.forceUnitData.UseActionButtonCount = actionButtonCount;
-                    var tempforcesubactioncount = tempForceData.forceUnitData.UseActionButtonCount + tempForceData.forceUnitData.UseSkillCount;
-                    OnButtonListSetting(tempforcesubactioncount);
-                    OffCostButton(tempforcesubactioncount);
+                    //tempForceData.forceUnitData.UseActionButtonCount = actionButtonCount;
+                    //var tempforcesubactioncount = tempForceData.forceUnitData.UseActionButtonCount + tempForceData.forceUnitData.UseSkillCount;
+                    //OnButtonListSetting(tempforcesubactioncount);
+                    //OffCostButton(tempforcesubactioncount);
                     Manager.Instance.inGameManager.isPlayerSelect = LayerType.ForceUnit;
                     Manager.Instance.inGameManager.isUnitSelect = false;
                     Manager.Instance.inGameManager.Offselecet();
@@ -224,6 +223,12 @@ public class GetUIDataInfo : MonoBehaviour
                         }
                     }
                     break;
+
+                default:
+                    Manager.Instance.inGameManager.isUnitSelect = false;
+
+                    break;
+
             }
         }
     }

@@ -68,14 +68,14 @@ public class EnemyUnit : MonoBehaviour , SubActionData.IUnitAction
                 break;
             }
             UnitAttack();
-
+            enemyUnitAnimator.SetBool("OnFight", false);
             yield return new WaitForSeconds(5);
         }
     }
 
     public void UnitAttack()
     {
-        if (attackTargetUnit.gameObject.activeSelf || Manager.Instance.inGameManager.isGameOver == false)
+        if (attackTargetUnit.gameObject.activeInHierarchy || Manager.Instance.inGameManager.isGameOver == false)
         {
             if(attackTargetUnit.CompareTag("ForceUnit"))
             {

@@ -48,7 +48,7 @@ public class CameraController : MonoBehaviour
         {
             moveZ = +0.05f;
             cameraPos.z = moveZ;
-            if (Camera.main.transform.position.z >= 14)
+            if (Camera.main.transform.position.z >= 12)
             {
                 cameraPos.z = 14;
             }

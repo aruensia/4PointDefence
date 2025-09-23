@@ -172,12 +172,16 @@ public class ForceUnit : MonoBehaviour
 
     public void UnitAttack()
     {
-        if (targetUnit.gameObject.activeSelf)
+        if (targetUnit.gameObject.activeInHierarchy)
         {
             if (targetUnit.CompareTag("enemy"))
             {
                 this.targetUnit.GetComponent<EnemyUnit>().TakeDamage(this.forceUnitData.Damage, this.gameObject);
             }
+        }
+        else
+        {
+            this.forceUnitData.unitState = UnitState.PileIn;
         }
     }
 

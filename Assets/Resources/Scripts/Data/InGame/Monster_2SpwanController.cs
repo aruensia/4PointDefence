@@ -72,7 +72,6 @@ public class Monster_2SpwanController : MonoBehaviour
         newmonster.enemyUnitData.MoveSpeed = tempEnemy.MoveSpeed;
         newmonster.enemyUnitData.unitSize = tempEnemy.unitSize;
         newmonster.enemyUnitData.unitState = tempEnemy.unitState;
-        newmonster.enemyUnitData.UseSkillCount = tempEnemy.UseSkillCount;
         return newmonster;
     }
 

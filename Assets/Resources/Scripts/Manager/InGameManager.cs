@@ -160,13 +160,13 @@ public class InGameManager : MonoBehaviour
         var tempgold = playerData._defaultGold + playerData.totalGoldEnhance;
 
         Debug.Log("시작 시 기본 재화 + 강화값 " + tempgold);
-        Debug.Log("시작 시 기본 재화 " + playerData._defaultGold);
+        Debug.Log("시작 시 기본 재화 " + playerData._defaultGold); 
         Debug.Log("시작 시 강화값 " + playerData.totalGoldEnhance);
 
         StartCoroutine(UpdateGetGold(tempgold));
     }
 
-    public IEnumerator UpdateGetGold(int getgoldvalue)
+    public IEnumerator UpdateGetGold(float getgoldvalue)
     {
         while (true)
         {

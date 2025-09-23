@@ -31,11 +31,13 @@ public class FirebaseDbMgr : MonoBehaviour
     public void SaveToDb()
     {
         var _initMoney = Manager.Instance.player.playerMoney;
+        var _initGold = Manager.Instance.player.totalGoldEnhance;
         var _initUnit1 = Manager.Instance.player.Unit_1_Enhance;
         var _initUnit2 = Manager.Instance.player.Unit_2_Enhance;
         var _initUnit3 = Manager.Instance.player.Unit_3_Enhance;
 
         StartCoroutine(UpdataMoney(_initMoney));
+        StartCoroutine(UpdataTotalGoldCount(_initGold));
         StartCoroutine(UpdataUnit1Count(_initUnit1));
         StartCoroutine(UpdataUnit2Count(_initUnit2));
         StartCoroutine(UpdataUnit3Count(_initUnit3));
@@ -54,6 +56,22 @@ public class FirebaseDbMgr : MonoBehaviour
         else
         {
             Debug.Log("돈 업데이트 완료");
+        }
+    }
+
+    IEnumerator UpdataTotalGoldCount(float totalgold)
+    {
+        var DbTask = dbRef.Child("users").Child(user.UserId).Child("totalgold").SetValueAsync(totalgold);
+
+        yield return new WaitUntil(predicate: () => DbTask.IsCompleted);
+
+        if (DbTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"돈 업뎃 실패! 사유 : {DbTask.Exception}");
+        }
+        else
+        {
+            Debug.Log("골드 강화 업데이트 완료");
         }
     }
 

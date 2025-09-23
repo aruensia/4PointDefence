@@ -650,59 +650,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 100000, guid: 609de8fa3b748f249b6b7c7b952cd1ef, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1056913013813349489}
-    - targetCorrespondingSourceObject: {fileID: 100000, guid: 609de8fa3b748f249b6b7c7b952cd1ef, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 329669285642238842}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 609de8fa3b748f249b6b7c7b952cd1ef, type: 3}
 --- !u!4 &87465619295412832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 609de8fa3b748f249b6b7c7b952cd1ef, type: 3}
   m_PrefabInstance: {fileID: 87465619295811808}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &87465619295714880 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 609de8fa3b748f249b6b7c7b952cd1ef, type: 3}
-  m_PrefabInstance: {fileID: 87465619295811808}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1056913013813349489
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87465619295714880}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 609de8fa3b748f249b6b7c7b952cd1ef, type: 3}
---- !u!114 &329669285642238842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87465619295714880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81352add31aa9f44f960009e326ba3c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isdie: 0
 --- !u!1001 &1716490933129572562
 PrefabInstance:
   m_ObjectHideFlags: 0
