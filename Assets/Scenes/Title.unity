@@ -4800,6 +4800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b8c485be4a34149804215f482056cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DbDataLoadOn: 0
 --- !u!4 &729942678
 Transform:
   m_ObjectHideFlags: 0
@@ -6244,18 +6245,18 @@ PrefabInstance:
     - target: {fileID: 114604369937241004, guid: 5131754af739541a7a443bd0498d5498, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1885198934}
+      objectReference: {fileID: 2025053447}
     - target: {fileID: 114604369937241004, guid: 5131754af739541a7a443bd0498d5498, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114604369937241004, guid: 5131754af739541a7a443bd0498d5498, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Register
+      value: UserRegister
       objectReference: {fileID: 0}
     - target: {fileID: 114604369937241004, guid: 5131754af739541a7a443bd0498d5498, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: FirebaseAuthMgr, Assembly-CSharp
+      value: TitleManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 114604369937241004, guid: 5131754af739541a7a443bd0498d5498, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -6399,7 +6400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1100870028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11089,6 +11090,7 @@ MonoBehaviour:
   MainVolumValue: 0
   BGMVolumValue: 0
   SFXVolumValue: 0
+  DbMangerOn: 0
 --- !u!4 &2025053448
 Transform:
   m_ObjectHideFlags: 0
@@ -11255,7 +11257,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2065292321
 RectTransform:
   m_ObjectHideFlags: 0

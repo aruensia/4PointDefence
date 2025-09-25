@@ -200,6 +200,8 @@ public class FirebaseAuthMgr : MonoBehaviour
                         warningText.text = "";
                         _confirmText.text = "»ý¼º ¿Ï·á, ¹Ý°©½À´Ï´Ù " + user.DisplayName + "´Ô";
                         _startBtn.interactable = true;
+                        _titleManager.DbManager.gameObject.SetActive(true);
+                        _titleManager.DbMangerOn = true;
                     }
                 }
             }

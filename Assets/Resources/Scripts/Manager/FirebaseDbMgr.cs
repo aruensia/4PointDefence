@@ -11,6 +11,7 @@ public class FirebaseDbMgr : MonoBehaviour
 {
     DatabaseReference dbRef;
     FirebaseUser user;
+    public bool DbDataLoadOn = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class FirebaseDbMgr : MonoBehaviour
         if(dbRef != null)
         {
             Debug.Log("µ•¿Ã≈Õ ø»");
+            DbDataLoadOn = true;
         }
         else
         {

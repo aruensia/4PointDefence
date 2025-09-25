@@ -92,6 +92,8 @@ public class EnhanceData : MonoBehaviour
         text_currentPlayerMoney.GetComponent<TextMeshProUGUI>().text = "보유 재화 : " + currentPlayerMoney;
         text_currentGoldEnhance.GetComponent<TextMeshProUGUI>().text = "골드 획득 Lv : " + currentGoldEnhance;
         text_currentBaseHpEnhance.GetComponent<TextMeshProUGUI>().text = "본부 체력 Lv : " + currentBaseHpEnhance;
+        text_Cost[0].GetComponent<TextMeshProUGUI>().text = "강화 비용 : " + (currentGoldEnhance * cost);
+        text_Cost[1].GetComponent<TextMeshProUGUI>().text = "강화 비용 : " + (currentBaseHpEnhance * cost);
     }
 
 
@@ -101,6 +103,9 @@ public class EnhanceData : MonoBehaviour
         text_currentPlayerunit1.GetComponent<TextMeshProUGUI>().text = "군인 Lv : " + currentPlayerunit1;
         text_currentPlayerUnit2.GetComponent<TextMeshProUGUI>().text = "강화 군인 Lv : " + currentPlayerunit2;
         text_currentPlayerUnit3.GetComponent<TextMeshProUGUI>().text = "정예 군인 Lv : " + currentPlayerunit3;
+        text_Cost[2].GetComponent<TextMeshProUGUI>().text = "강화 비용 : " + (currentPlayerunit1 * cost);
+        text_Cost[3].GetComponent<TextMeshProUGUI>().text = "강화 비용 : " + (currentPlayerunit2 * cost);
+        text_Cost[4].GetComponent<TextMeshProUGUI>().text = "강화 비용 : " + (currentPlayerunit3 * cost);
     }
 
     public void UpgradeBase(int initbutton)

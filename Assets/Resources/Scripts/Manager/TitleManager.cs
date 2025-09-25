@@ -39,6 +39,7 @@ public class TitleManager : MonoBehaviour
     public float SFXVolumValue;
 
     public static bool playerData = false;
+    public bool DbMangerOn = false;
 
     private void OnEnable()
     {
@@ -130,6 +131,20 @@ public class TitleManager : MonoBehaviour
     public void LoginButtonOn()
     {
         startBtn.gameObject.transform.parent.gameObject.SetActive(true);
+    }
+
+    public void UserRegister()
+    {
+        FirebaseAuthMgr tempAuth = GameObject.Find("AuthManager").gameObject.GetComponent<FirebaseAuthMgr>();
+        tempAuth.Register();
+
+        StartCoroutine(WaitDbMgr());
+    }
+
+    IEnumerator WaitDbMgr()
+    {
+        yield return new WaitUntil(() => DbMangerOn && firebaseDbMgr.DbDataLoadOn);
+        firebaseDbMgr.SaveToDb();
     }
 
     public void SetOnRegisterUI()
