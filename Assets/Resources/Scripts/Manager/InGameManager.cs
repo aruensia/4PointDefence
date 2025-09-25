@@ -244,13 +244,40 @@ public class InGameManager : MonoBehaviour
         var tempunit = Instantiate(Manager.Instance.inGameManager.selectedUnit, setpos);
         ForceUnitData tempdata = (ForceUnitData)Manager.Instance.dataloader.tableDatas["ForceUnitTable"][Manager.Instance.inGameManager.currentUnitNum];
         tempunit.transform.SetParent(Manager.Instance.inGameManager.unitFiled.transform);
-        tempunit.GetComponent<ForceUnit>().forceUnitData.Name = tempdata.Name;
-        tempunit.GetComponent<ForceUnit>().forceUnitData.Hp = tempdata.Hp;
-        tempunit.GetComponent<ForceUnit>().forceUnitData.Armor = tempdata.Armor;
-        tempunit.GetComponent<ForceUnit>().forceUnitData.Damage = tempdata.Damage;
-        tempunit.GetComponent<ForceUnit>().forceUnitData.AttackRange = tempdata.AttackRange;
-        tempunit.GetComponent<ForceUnit>().forceUnitData.AttackSpeed = tempdata.AttackSpeed;
-        tempunit.GetComponent<ForceUnit>().forceUnitData.Cost = tempdata.Cost;
+        tempunit.GetComponent<ForceUnit>().forceUnitData.Index = tempdata.Index;
+        switch (tempdata.Index)
+        {
+            case 1100000:
+                tempunit.GetComponent<ForceUnit>().forceUnitData.Name = tempdata.Name;
+                tempunit.GetComponent<ForceUnit>().forceUnitData.Hp = tempdata.Hp + (Manager.Instance.player.Unit_1_Enhance * 2);
+                tempunit.GetComponent<ForceUnit>().forceUnitData.Armor = tempdata.Armor + (Manager.Instance.player.Unit_1_Enhance);
+                tempunit.GetComponent<ForceUnit>().forceUnitData.Damage = tempdata.Damage + (Manager.Instance.player.Unit_1_Enhance);
+                tempunit.GetComponent<ForceUnit>().forceUnitData.AttackRange = tempdata.AttackRange;
+                tempunit.GetComponent<ForceUnit>().forceUnitData.AttackSpeed = tempdata.AttackSpeed;
+                tempunit.GetComponent<ForceUnit>().forceUnitData.Cost = tempdata.Cost;
+                break;
+
+            case 1100001:
+                tempunit.GetComponent<ForceUnit>().forceUnitData.Name = tempdata.Name;
+                tempunit.GetComponent<ForceUnit>().forceUnitData.Hp = tempdata.Hp + (Manager.Instance.player.Unit_2_Enhance * 2);
+                tempunit.GetComponent<ForceUnit>().forceUnitData.Armor = tempdata.Armor + (Manager.Instance.player.Unit_2_Enhance + 1);
+                tempunit.GetComponent<ForceUnit>().forceUnitData.Damage = tempdata.Damage + (Manager.Instance.player.Unit_2_Enhance + 1);
+                tempunit.GetComponent<ForceUnit>().forceUnitData.AttackRange = tempdata.AttackRange;
+                tempunit.GetComponent<ForceUnit>().forceUnitData.AttackSpeed = tempdata.AttackSpeed;
+                tempunit.GetComponent<ForceUnit>().forceUnitData.Cost = tempdata.Cost;
+                break;
+
+            case 1100002:
+                tempunit.GetComponent<ForceUnit>().forceUnitData.Name = tempdata.Name;
+                tempunit.GetComponent<ForceUnit>().forceUnitData.Hp = tempdata.Hp + (Manager.Instance.player.Unit_3_Enhance * 2);
+                tempunit.GetComponent<ForceUnit>().forceUnitData.Armor = tempdata.Armor + (Manager.Instance.player.Unit_3_Enhance + 2);
+                tempunit.GetComponent<ForceUnit>().forceUnitData.Damage = tempdata.Damage + (Manager.Instance.player.Unit_3_Enhance + 2);
+                tempunit.GetComponent<ForceUnit>().forceUnitData.AttackRange = tempdata.AttackRange;
+                tempunit.GetComponent<ForceUnit>().forceUnitData.AttackSpeed = tempdata.AttackSpeed;
+                tempunit.GetComponent<ForceUnit>().forceUnitData.Cost = tempdata.Cost;
+                break;
+
+        }
 
         Quaternion vector3 = Quaternion.Euler(0, 180f, 0);
         tempunit.transform.rotation = vector3;

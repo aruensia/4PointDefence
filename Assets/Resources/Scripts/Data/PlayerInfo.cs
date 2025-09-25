@@ -7,6 +7,7 @@ public class PlayerInfo
     public int playerMoney;
 
     public float totalGoldEnhance = 1;
+    public int BaseHpEnhance = 0;
     public int Unit_1_Enhance = 1;
     public int Unit_2_Enhance = 1;
     public int Unit_3_Enhance = 1;

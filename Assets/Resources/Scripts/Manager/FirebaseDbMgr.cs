@@ -32,12 +32,14 @@ public class FirebaseDbMgr : MonoBehaviour
     {
         var _initMoney = Manager.Instance.player.playerMoney;
         var _initGold = Manager.Instance.player.totalGoldEnhance;
+        var _initBaseHp = Manager.Instance.player.BaseHpEnhance;
         var _initUnit1 = Manager.Instance.player.Unit_1_Enhance;
         var _initUnit2 = Manager.Instance.player.Unit_2_Enhance;
         var _initUnit3 = Manager.Instance.player.Unit_3_Enhance;
 
         StartCoroutine(UpdataMoney(_initMoney));
         StartCoroutine(UpdataTotalGoldCount(_initGold));
+        StartCoroutine(UpdataBaesHpCount(_initBaseHp));
         StartCoroutine(UpdataUnit1Count(_initUnit1));
         StartCoroutine(UpdataUnit2Count(_initUnit2));
         StartCoroutine(UpdataUnit3Count(_initUnit3));
@@ -62,6 +64,22 @@ public class FirebaseDbMgr : MonoBehaviour
     IEnumerator UpdataTotalGoldCount(float totalgold)
     {
         var DbTask = dbRef.Child("users").Child(user.UserId).Child("totalgold").SetValueAsync(totalgold);
+
+        yield return new WaitUntil(predicate: () => DbTask.IsCompleted);
+
+        if (DbTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"돈 업뎃 실패! 사유 : {DbTask.Exception}");
+        }
+        else
+        {
+            Debug.Log("골드 강화 업데이트 완료");
+        }
+    }
+
+    IEnumerator UpdataBaesHpCount(float baseHp)
+    {
+        var DbTask = dbRef.Child("users").Child(user.UserId).Child("baseHp").SetValueAsync(baseHp);
 
         yield return new WaitUntil(predicate: () => DbTask.IsCompleted);
 
@@ -147,6 +165,8 @@ public class FirebaseDbMgr : MonoBehaviour
             DataSnapshot snapshot = DBTask.Result;
 
             Manager.Instance.player.playerMoney = int.Parse(snapshot.Child("money").Exists ? snapshot.Child("money").Value.ToString() : "0");
+            Manager.Instance.player.totalGoldEnhance = int.Parse(snapshot.Child("totalgold").Exists ? snapshot.Child("totalgold").Value.ToString() : "0");
+            Manager.Instance.player.BaseHpEnhance = int.Parse(snapshot.Child("baseHp").Exists ? snapshot.Child("baseHp").Value.ToString() : "0");
             Manager.Instance.player.Unit_1_Enhance = int.Parse(snapshot.Child("unit1").Exists ? snapshot.Child("unit1").Value.ToString() : "0");
             Manager.Instance.player.Unit_2_Enhance = int.Parse(snapshot.Child("unit2").Exists ? snapshot.Child("unit2").Value.ToString() : "0");
             Manager.Instance.player.Unit_3_Enhance = int.Parse(snapshot.Child("unit3").Exists ? snapshot.Child("unit3").Value.ToString() : "0");
@@ -154,6 +174,7 @@ public class FirebaseDbMgr : MonoBehaviour
             TitleManager.playerData = true;
 
             Debug.Log("데이터 로드 성공");
+            Debug.Log("데이터 로드 성공" + Manager.Instance.player.playerMoney);
         }
     }
 }

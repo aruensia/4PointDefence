@@ -11,6 +11,9 @@ public class TitleManager : MonoBehaviour
     public GameObject EnhancePanel;
     public GameObject LoginPanel;
 
+    public GameObject UserEnhanceItemList;
+    public GameObject UnitEnhanceItemList;
+
     public InputField emailField; 
     public InputField pwField; 
     public InputField nickField; 
@@ -25,6 +28,7 @@ public class TitleManager : MonoBehaviour
     public GameObject ExitBtn;
 
     public GameObject DbManager;
+    public GameObject EnhanceManager;
 
     public List<TextMeshProUGUI> enhanceInfoList;
 
@@ -57,7 +61,6 @@ public class TitleManager : MonoBehaviour
         firebaseDbMgr.SaveToDb();
     }
 
-
     public void SaveOptionData()
     {
         PlayerPrefs.SetFloat("volumNum", MainVolumValue);
@@ -82,6 +85,7 @@ public class TitleManager : MonoBehaviour
 
     public void EnhancePanelOn()
     {
+        StartCoroutine(WaitPlayerData());
         EnhancePanel.SetActive(true);
     }
 
@@ -97,6 +101,22 @@ public class TitleManager : MonoBehaviour
     {
         EnhancePanel.GetComponent<EnhanceData>().ResetUpgradeValue();
         EnhancePanel.SetActive(false);
+    }
+
+    public void UserEnhaceItemOn()
+    {
+        UserEnhanceItemList.gameObject.SetActive(true);
+        UnitEnhanceItemList.gameObject.SetActive(false);
+
+        EnhanceManager.GetComponent<EnhanceData>().ShowBaseDataInfo();
+    }
+
+    public void UnitEnhaceItemOn()
+    {
+        UserEnhanceItemList.gameObject.SetActive(false);
+        UnitEnhanceItemList.gameObject.SetActive(true);
+
+        EnhanceManager.GetComponent<EnhanceData>().ShowUnitDataInfo();
     }
 
     public void LoginSuccess()
