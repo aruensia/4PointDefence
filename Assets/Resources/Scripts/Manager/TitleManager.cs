@@ -29,6 +29,7 @@ public class TitleManager : MonoBehaviour
 
     public GameObject DbManager;
     public GameObject EnhanceManager;
+    public GameObject OptionManager;
 
     public List<TextMeshProUGUI> enhanceInfoList;
 
@@ -77,6 +78,8 @@ public class TitleManager : MonoBehaviour
     public void OptionPanelOn()
     {
         OptionPanel.SetActive(true);
+        OptionManager.GetComponent<OptionManager>().LoadVolumeData();
+        OptionManager.GetComponent<OptionManager>().SetVolumeData();
     }
 
     public void OptionPanelOff()
