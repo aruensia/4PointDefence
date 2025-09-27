@@ -15,22 +15,29 @@ public class OptionManager : MonoBehaviour
     public TextMeshProUGUI bgmVolumeText;
     public TextMeshProUGUI sfxVolumeText;
 
-    int masterVolumeData;
-    int bgmVolumeData;
-    int sfxVolumeData;
+    public int masterVolumeData;
+    public int bgmVolumeData;
+    public int sfxVolumeData;
 
     private void Awake()
     {
         DefaultSetting();
+        LoadVolumeData();
+        Checkss();
     }
 
-    public void DeleteData()
+    private void Start()
     {
-        PlayerPrefs.DeleteKey("masterVolume");
-        PlayerPrefs.DeleteKey("bgmVolume");
-        PlayerPrefs.DeleteKey("sfxVolume");
-        PlayerPrefs.DeleteKey("isFirest");
+        //LoadVolumeData();
     }
+
+    void Checkss()
+    {
+        Debug.Log(masterVolumeData);
+        Debug.Log(bgmVolumeData);
+        Debug.Log(sfxVolumeData);
+    }
+
 
     public void DefaultSetting()
     {

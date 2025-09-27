@@ -6571,8 +6571,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  SFX: {fileID: 0}
-  BGM: {fileID: 0}
+  optionManager: {fileID: 1256277112}
+  sfxVolume: 0
+  bgmVolume: 0
 --- !u!82 &896508593
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8035,6 +8036,9 @@ MonoBehaviour:
   masterVolumeText: {fileID: 679455975}
   bgmVolumeText: {fileID: 1485322529}
   sfxVolumeText: {fileID: 2111502159}
+  masterVolumeData: 0
+  bgmVolumeData: 0
+  sfxVolumeData: 0
 --- !u!4 &1256277114
 Transform:
   m_ObjectHideFlags: 0

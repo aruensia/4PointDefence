@@ -6,6 +6,7 @@ using Firebase.Auth;
 using Firebase.Database;
 using System.Threading.Tasks;
 using TMPro.EditorUtilities;
+using UnityEngine.UI;
 
 public class FirebaseAuthMgr : MonoBehaviour
 {
@@ -200,8 +201,12 @@ public class FirebaseAuthMgr : MonoBehaviour
                         warningText.text = "";
                         _confirmText.text = "»ý¼º ¿Ï·á, ¹Ý°©½À´Ï´Ù " + user.DisplayName + "´Ô";
                         _startBtn.interactable = true;
+                        _titleManager.nickField.gameObject.SetActive(false);
+                        _titleManager.emailField.GetComponent<InputField>().text = "";
+                        _titleManager.pwField.GetComponent<InputField>().text = "";
                         _titleManager.DbManager.gameObject.SetActive(true);
                         _titleManager.DbMangerOn = true;
+                        _titleManager.RegisterBtn.gameObject.SetActive(false);
                     }
                 }
             }

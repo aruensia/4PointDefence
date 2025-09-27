@@ -33,7 +33,7 @@ public class ForceUnit : MonoBehaviour
     {
         forceUnitAnimator = GetComponent<Animator>();
         unitAudioSource = GetComponent<AudioSource>();
-        unitAudioSource.volume = Manager.Instance.inGameManager.soundManagerObj.GetComponent<AudioSource>().volume;
+        unitAudioSource.volume = Manager.Instance.inGameManager.soundManagerObj.GetComponent<SoundManager>().sfxVolume;
     }
 
     void Start()
