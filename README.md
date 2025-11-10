@@ -5,7 +5,6 @@
  - 기간 : 20일
  - 인원 : 1명
  - 사용 툴 : Unity 5, Firebase SDK(Auth, Realtime Database), Git Fork
- - 
 
 ## 사용 기능
   - 아웃게임에 사용한 기술
