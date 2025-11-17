@@ -65,15 +65,10 @@
 - [게임 소개](#-게임-소개)
 - [주요 스크립트](#-주요-스크립트)
   - [오디오 시스템](#-오디오-시스템)
-  - [인증 및 데이터베이스](#-인증-및-데이터베이스)
-  - [플레이어 이동 및 컨트롤](#-플레이어-이동-및-컨트롤)
-  - [플레이어 회전 시스템](#-플레이어-회전-시스템)
-  - [로비 및 매치메이킹](#-로비-및-매치메이킹)
-  - [플레이어 설정 및 UI](#-플레이어-설정-및-ui)
-  - [옵션 시스템](#️-옵션-시스템)
-  - [상점 시스템](#-상점-시스템)
-  - [게임플레이](#-게임플레이)
-  - [기타](#-기타)
+  - [회원 인증](#-회원-인증)
+  - [데이터 관리](#-데이터-관리)
+  - [플레이어](#-플레이어)
+  - [매니저](#-매니저)
 - [기술 스택](#-주요-기술-스택)
 - [참고사항](#-참고사항)
 - [개발자](#-개발자)
@@ -126,6 +121,7 @@
 - `InitVolumeData()`: 사운드 정보 적용하기
 
 **✨ 특징**: Manager 싱글톤의 하위 오브젝트로 들어가 사라지지 않도록 작업
+             Playerprefs로 데이터를 로컬로 저장
 
 <br>
 <br>
@@ -199,6 +195,9 @@
 - `public float DefaultGold`: 인 게임 사용 재화
 - `public int ~_Enhance ` 인게임 강화 정보
 
+<br>
+
+### [`Manager.cs`](https://github.com/aruensia/4PointDefence/blob/Network/Assets/Resources/Scripts/Manager/Manager.cs)
 
 <br>
 <br>
@@ -220,55 +219,39 @@
 - 싱글턴 패턴으로 작동하여 항상 하나만 사용
 - 캡슐화를 위해 다를 매니저를 변수로 둠
 
+  **📌 주요 메서드**:
+- `SaveToDb()`: 유저 데이터 저장
+- `LoadToDb()`: 유저 데이터 불러오기
+
 <br>
 
 ### [`InGameManager.cs`](https://github.com/aruensia/4PointDefence/blob/Network/Assets/Resources/Scripts/Manager/InGameManager.cs)
 
-**💡 기능**: 인게임에서 사용되는 특정 기능 및 데이터를 관리
+**💡 기능**: 인게임에서 사용되는 기능 및 데이터를 관리
 
 **✨ 특징**: 
 - 몬스터 스폰 로직 관리
-- 게임 데이터 시작 및 종료에 따른 데이터 저장 및 불러오기 관리
-- 
-
-<br>
-<br>
-
----
-
-<br>
-<br>
-
-## 🏠 로비 및 매치메이킹
-
-<br>
-
-### [`LobbyManager.cs`](https://github.com/jonghyun109/UnimoParty/blob/Develop_main/Assets/Scripts/YJH/LobbyManager.cs)
-
-**💡 기능**: 로비 UI 관리 및 Photon 네트워크 매치메이킹 시스템
-
-**📌 주요 기능**:
-- PVE/PVP 모드 선택
-- 방 생성 및 참가
-- 코드를 통한 방 입장
-- 자동 매치메이킹 시스템
-- Ready 시스템 및 게임 시작
+- 게임 시작 및 종료에 따른 데이터 저장 및 불러오기 관리
+- 아군 유닛 생선 및 배치
 
 **📌 주요 메서드**:
-- `CreatRoom()`: 방 생성
-- `MatchmakingButton()`: 매치메이킹 시작/중지
-- `CodeJoinRoom()`: 코드로 방 입장
-- `StartGameButton()`: 게임 시작
+- `UnitTrainingBoxCheck()`: 유저 병력을 배치를 판정하는 메서드
+- `CallDataChange()`: 인게임내 데이터가 변화가 있음을 알리는 메서드
+- `StageCheck()` : 스테이지의 상태를 확인하는 코루틴
 
 <br>
 
-### [`TestPvP.cs`](https://github.com/jonghyun109/UnimoParty/blob/Develop_main/Assets/Scripts/YJH/TestPvP.cs)
+### [`TitleManager.cs`](https://github.com/aruensia/4PointDefence/blob/main/Assets/Resources/Scripts/Manager/TitleManager.cs)
 
-**💡 기능**: 개발자/디자이너용 PvP 테스트 로비
+**💡 기능**: 타이틀에서 사용하는 기능을 관리
 
 **✨ 특징**: 
-- 개발팀과 디자인팀 전용 테스트 룸
-- 간단한 방 생성 및 게임 시작 기능
+- 게임 시작 시 유저 데이터 적용
+- 타이틀 버튼 관리
+
+**📌 주요 메서드**:
+- `WaitPlayerData()`: 비동기를 통해 유저 데이터를 받을 때까지 대기하는 함
+- `LoginSuccess()`: 유저 로그인이 완료됐음을 알리는 메서드
 
 <br>
 <br>
@@ -278,30 +261,58 @@
 <br>
 <br>
 
-## 👤 플레이어 설정 및 UI
+## 🏠 데이터
 
 <br>
 
-### [`PlayerPanel.cs`](https://github.com/jonghyun109/UnimoParty/blob/Develop_main/Assets/Scripts/YJH/PlayerPanel.cs)
+### [`DataLoader.cs`](https://github.com/aruensia/4PointDefence/blob/main/Assets/Resources/Scripts/Data/DataLoader.cs)
 
-**💡 기능**: 로비에서 플레이어 패널 UI 관리
+**💡 기능**: Json 파일 데이터 로드
 
-**📌 표시 정보**:
-- 닉네임
-- Ready 상태
-- 방장 여부
+**✨ 특징**: 
+- Json 파일을 불러와 유저 Dictionary에 저장
+
+**📌 주요 메서드**:
+- `DataLoad()`: Json 파일을 읽고 데이터로 저장하는 메서드
 
 <br>
 
-### [`PlayerAvatarSetup.cs`](https://github.com/jonghyun109/UnimoParty/blob/Develop_main/Assets/Scripts/YJH/PlayerAvatarSetup.cs)
+### [`EnhanceData.cs`](https://github.com/aruensia/4PointDefence/blob/main/Assets/Resources/Scripts/Data/InGame/EnhanceData.cs)
 
-**💡 기능**: 인게임에서 플레이어 캐릭터 및 우주선 설정
+**💡 기능**: 유저 능력을 강화할 때 필요한 기능을 관리
 
-**✨ 특징**:
-- Photon RPC를 통한 네트워크 동기화
-- 캐릭터와 우주선 인덱스 기반 생성
-- 로컬 플레이어의 캐릭터는 렌더러 비활성화 (1인칭 시점)
+**✨ 특징**: 
+- Firebase와 비동기 통신을 이용한 유저 정보 저장 및 불러오기
 
+**📌 주요 메서드**:
+- `UpgradeUserUnit(int initbutton)` : 버튼에 할당된 유닛을 재화를 소모하여 강화하는 메서드
+- `SaveUpGrade()` : 강화한 정보를 Firebase 리얼타임 데이터베이스에 저장하는 메서드
+
+<br>
+
+### [`Monster_1SpwanController.cs`](https://github.com/aruensia/4PointDefence/blob/main/Assets/Resources/Scripts/Data/InGame/Monster_1SpwanController.cs)
+
+**💡 기능**: 스테이지마다 생성되는 몬스터의 양을 관리
+
+**✨ 특징**: 
+- Queue를 이용한 오브젝트 풀를 사용함으로 써 몬스터 오브젝트를 효율적으로 관리
+
+**📌 주요 메서드**:
+- `SetMonsterSpwanData()` : 스테이지 테이블의 몬스터 갯수와 웨이브 갯수를 가져오는 메서드
+- `StartMonsterSetup()` : 강화한 정보를 Firebase 리얼타임 데이터베이스에 저장하는 메서드
+
+<br>
+
+### [`EnemyWaveController.cs`](https://github.com/aruensia/4PointDefence/blob/main/Assets/Resources/Scripts/Data/InGame/EnemyWaveController.cs)
+
+**💡 기능**: 생성된 몬스터그룹을 잠시 관리
+
+**✨ 특징**: 
+- 많은 수의 몬스터들을 한 번에 잠시동안 조종하여 연산에 부하를 줄임
+
+**📌 주요 메서드**:
+- `PlayerContectisOn()` : 몬스터 그룹이 아군 유닛과 접촉함을 알리는 메서
+  
 <br>
 <br>
 
@@ -411,39 +422,9 @@
 <br>
 <br>
 
-## 📦 기타
-
-<br>
-
-### [`FakeRoom.cs`](https://github.com/jonghyun109/UnimoParty/blob/Develop_main/Assets/Scripts/YJH/FakeRoom.cs)
-
-**💡 기능**: 방과 플레이어 정보를 담는 데이터 클래스
-
-**✨ 용도**: 테스트 또는 UI 표시용 가상 방 데이터
-
-<br>
-
-### [`PrefabCache.cs`](https://github.com/jonghyun109/UnimoParty/blob/Develop_main/Assets/Scripts/YJH/PrefabCache.cs)
-
-**⚠️ 상태**: 빈 스크립트 (미구현)
-
-<br>
-<br>
-
-<br>
-<br>
-
----
-
-<br>
-<br>
-
 ## 🔧 주요 기술 스택
 
 <br>
-
-- 🎯 **Unity XR Interaction Toolkit**: VR 인터랙션
-- 🌐 **Photon PUN2**: 멀티플레이어 네트워킹
 - 🔥 **Firebase**: 인증 및 데이터베이스
 - 📝 **TextMeshPro**: UI 텍스트
 
@@ -459,11 +440,8 @@
 
 <br>
 
-💡 **멀티플레이어**
-- 대부분의 스크립트가 Photon PUN2를 사용하여 멀티플레이어 기능 구현
-
-💡 **상태 이상 효과**
-- IFreeze 인터페이스를 통해 얼음 폭탄 등의 상태 이상 효과 구현
+💡 **오브젝트풀**
+- Queue를 활용한 오브젝트 풀 구현 및 활용
 
 💡 **데이터 지속성**
 - DontDestroyOnLoad 패턴을 사용하여 씬 전환 시에도 데이터 유지
@@ -482,12 +460,12 @@
 
 <br>
 
-**YJH (윤종현)**
+**aruensia (하준영)**
 
 <br>
 <br>
 
-[![GitHub](https://img.shields.io/badge/GitHub-jonghyun109-181717?style=for-the-badge&logo=github)](https://github.com/jonghyun109/UnimoParty)
+[![GitHub](https://img.shields.io/badge/GitHub-aruensia-181717?style=for-the-badge&logo=github)](https://github.com/aruensia/aruensia)
 
 <br>
 
