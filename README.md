@@ -1,29 +1,3 @@
-## 4PointDefence 소개
-  * 4방향에서 몰려오는 몬스터로부터 기지를 지키기 위해, 매 초 마다 들어오는 재화를 소모하여 병사를 배치하고 강화하는 게임입니다.
-
-## 개발 환경
- - 기간 : 20일
- - 인원 : 1명
- - 사용 툴 : Unity 5, Firebase SDK(Auth, Realtime Database), Git Fork
-
-## 사용 기능
-  - 아웃게임에 사용한 기술
-  
-    * Firebase Auth의 이메일을 통한 유저 로그인 및 회원가입
-    * Firebase Realtime Database를 이용한 유저 정보 관리
-    * PlayerPrebs를 이용한 로컬 데이터 저장
-
-  - 인게임에 사용한 기술
-  
-    * Queue를 몬스터 오브젝트 풀
-    * NewinputSystem을 이용한 단축키 기능
-    * FSM을 이용한 몬스터의 AI 기능
-    * Raycast를 이용한 인게임 UI 정보 출력
-    * 싱글턴 패턴
-
-<div align="center">
-
-
 
 # [<img width="60" height="60" alt="Youtube_logo" src="https://github.com/user-attachments/assets/8e31fdca-af1b-4ebc-b2c9-cdb9983454b4" />](https://youtu.be/MvmJK4SbtK0)  4PointDefance
 
@@ -66,9 +40,10 @@
 - [주요 스크립트](#-주요-스크립트)
   - [오디오 시스템](#-오디오-시스템)
   - [회원 인증](#-회원-인증)
-  - [데이터 관리](#-데이터-관리)
+  - [데이터 베이스](#-데이터-베이스)
   - [플레이어](#-플레이어)
   - [매니저](#-매니저)
+  - [데이터](#-데이터)
 - [기술 스택](#-주요-기술-스택)
 - [참고사항](#-참고사항)
 - [개발자](#-개발자)
@@ -155,7 +130,7 @@
 <br>
 <br>
 
-## :file_folder: 데이터 관리
+## :file_folder: 데이터 베이스
 
 <br>
 
@@ -317,102 +292,6 @@
 <br>
 
 ---
-
-<br>
-<br>
-
-## ⚙️ 옵션 시스템
-
-<br>
-
-### [`OptionManager.cs`](https://github.com/jonghyun109/UnimoParty/blob/Develop_main/Assets/Scripts/YJH/OptionManager.cs)
-
-**💡 기능**: 게임 옵션 UI 관리 및 설정 저장/로드
-
-**📌 옵션 항목**:
-- Vignette 크기 (멀미 방지)
-- BGM 볼륨
-- SFX 볼륨
-- 회전 방식 (Smooth/Snap)
-- Snap 회전 각도 (30/60/90도)
-- Smooth 회전 속도
-
-**📌 주요 메서드**:
-- `OptionSave()`: PlayerPrefs에 옵션 저장
-- `OptionLoad()`: PlayerPrefs에서 옵션 로드
-- `ValueChange()`: 슬라이더 값 변경 시 실시간 적용
-
-<br>
-
-### [`OptionData.cs`](https://github.com/jonghyun109/UnimoParty/blob/Develop_main/Assets/Scripts/YJH/OptionData.cs)
-
-**💡 기능**: 옵션 데이터를 저장하는 정적 클래스
-
-**✨ 특징**: 씬 간 옵션 데이터 공유
-
-<br>
-
-### [`LoadPlayerSetting.cs`](https://github.com/jonghyun109/UnimoParty/blob/Develop_main/Assets/Scripts/YJH/LoadPlayerSetting.cs)
-
-**💡 기능**: 인게임 시작 시 저장된 플레이어 옵션 설정 로드
-
-**📌 적용 항목**:
-- Vignette 크기
-- 회전 방식 및 속도
-
-<br>
-<br>
-
----
-
-<br>
-<br>
-
-## 🛒 상점 시스템
-
-<br>
-
-### [`ShopManager.cs`](https://github.com/jonghyun109/UnimoParty/blob/Develop_main/Assets/Scripts/YJH/ShopManager.cs)
-
-**💡 기능**: 캐릭터 및 우주선 상점 관리
-
-**📌 주요 기능**:
-- 캐릭터 및 우주선 미리보기
-- 구매 시스템 (Firebase 연동)
-- 구매 정보 저장 및 로드
-- 선택한 캐릭터/우주선 정보를 Photon CustomProperties에 저장
-
-**📌 주요 메서드**:
-- `CharacterPreview(int index)`: 캐릭터 미리보기
-- `ShipPreview(int index)`: 우주선 미리보기
-- `BuyShip(SpaceShip selectedShip)`: 우주선 구매
-- `SaveSelectedIndices()`: 선택 정보 저장
-
-<br>
-<br>
-
----
-
-<br>
-<br>
-
-## 🎮 게임플레이
-
-<br>
-
-### [`SpawnTest.cs`](https://github.com/jonghyun109/UnimoParty/blob/Develop_main/Assets/Scripts/YJH/SpawnTest.cs)
-
-**💡 기능**: PVE 모드 몬스터 스폰 시스템
-
-**✨ 특징**:
-- 마스터 클라이언트만 스폰 관리
-- Photon RPC를 통한 네트워크 동기화
-- 지정된 영역 내 랜덤 위치 스폰
-- 게임 종료 시 자동으로 스폰 중지
-
-**📌 주요 속성**:
-- `spawnList`: 스폰할 프리팹과 개수 리스트
-- `areaCenter/areaSize`: 스폰 영역 설정
 
 <br>
 <br>
