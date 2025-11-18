@@ -304,8 +304,9 @@
 ## 🔧 주요 기술 스택
 
 <br>
-- 🔥 **Firebase**: 인증 및 데이터베이스
-- 📝 **TextMeshPro**: UI 텍스트
+
+**🔥 Firebase**: 인증 및 데이터베이스
+**📝 TextMeshPro**: UI 텍스트
 
 <br>
 <br>
